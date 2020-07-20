@@ -68,9 +68,9 @@ Becasue of our study design, the first two sample years only included RLTL chang
 
 Birth year and the occurrence of a heath event were not statistically significant (p>0.05) and therefore eliminated from the [model](#### Reduced model of RLTL change). In the reduced model, age was first fitted as a covariate (age in years) than as a [fixed effect](#### Reduced model of RLTL change with age as two level factor) (factor with two levels: younger vs. older than 1 year) and model fit was compared using AIC values. Because we wanted to investigate if milk productivity was associated with RLTL change, the best-fitting model of RLTL change was repeated for 918 change measurements of 253 animals for which milk productivity measurements were available and [average lifetime milk production re-scaled by dividing it by 1000 was fitted as additional covariate](#### Model of telomere change including milk productivity). 
 
-To investigate the association between RLTL change and productive lifespan we first focussed on RLTL change within the first year of life by only considering two RLTL measurements per animal: The first was taken shortly after birth and the second at the approximate age of one year. The change between those measurements was tested as an explanatory variable in a Cox proportional hazard model of productive lifespan. 
+To investigate the association between RLTL change and productive lifespan we first focussed on [RLTL change within the first year of life](#### Analysis of change between first two measurements within first year and productive lifespan) by only considering two RLTL measurements per animal: The first was taken shortly after birth and the second at the approximate age of one year. The change between those measurements was [noramlly distributed](##### Histogram of change in telomere length within the first year of life) and tested as an explanatory variable in a [Cox proportional hazard model of productive lifespan](##### Cox-proportional hazard model of productive lifespan). 
 
-Our data shows similar to other longitudinal studies with more than two measurements no constant attrition, maintenance or elongation, but more complex dynamics with short term changes in both directions. Example individual RLTL dynamics are shown for all cows with at least seven RLTL measurements in our dataset in figure S4. The complexity of telomere dynamics (which cannot be explained by measurement error alone) means that it is impossible to compare lifelong telomere dynamics by simply comparing slopes. To still be able to test how life-long telomere dynamics are associated with productive lifespan, we calculated three average metrics of RLTL dynamics over every individual’s lifetime: Firstly, the average of all their RLTL measures (“mean RLTL”) which investigates if animals with on average longer RLTL have a survival advantage, secondly, the average of all their RLTL change measures (“mean RLTL change”) and thirdly, the average of all their absolute RLTL change measures (“mean absolute RLTL change”). While mean RLTL change captures the direction and magnitude of RLTL changes, mean absolute RLTL change describes just the magnitude of change without considering its direction because we were interested to investigate if more change in either direction may be correlated with adverse effects. Figure S5 visualises the reasoning behind calculating these three measures of lifetime telomere length dynamics which are not surprisingly moderately correlated with one another (r ranged from -0.53 to 0.30, Figure S6). We used Cox proportional hazard models of productive lifespan that also included mean milk production as covariate and included mean RLTL, mean RLTL change and mean absolute RLTL change as explanatory variables first separately and then together to test their association with productive lifespan first separately, then while accounting for the effect of the other two measures. We have reported before that on average RLTL shortens in this population of dairy cattle within the first year of life while remaining relatively stable thereafter at the population level (Seeker et al., 2018; Seeker, et al., 2018). We were concerned that the initial RLTL attrition may contribute proportionally more to overall RLTL shortening in short-lived animals with less follow up samples which may explain a correlation of more telomere attrition with a shorter productive lifespan. To ensure the relationship was not entirely driven by this correlation, we tested all models again while excluding all measurements that were taken shortly after birth and then also while excluding all animals with less than three RLTL measurements. Lastly, we tested if the previously reported effect of RLTL at the age of one year on productive lifespan (Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Salvo-Chirnside, et al., 2018) remained statistically significant when tested in a Cox proportional hazard model together with milk productivity and mean RLTL change. 
+Our data shows similar to other longitudinal studies with more than two measurements no constant attrition, maintenance or elongation, but more complex dynamics with short term changes in both directions. [Example individual RLTL dynamics are shown for all cows with at least seven RLTL measurements](#### Individual longitudinal RLTL data of animals with more than seven measurements) in our dataset in figure S4. The complexity of telomere dynamics (which cannot be explained by measurement error alone) means that it is impossible to compare lifelong telomere dynamics by simply comparing slopes. To still be able to test how life-long telomere dynamics are associated with productive lifespan, we calculated three average metrics of RLTL dynamics over every individual’s lifetime: Firstly, the average of all their RLTL measures (“mean RLTL”) which investigates if animals with on average longer RLTL have a survival advantage, secondly, the average of all their RLTL change measures (“mean RLTL change”) and thirdly, the average of all their absolute RLTL change measures (“mean absolute RLTL change”). While mean RLTL change captures the direction and magnitude of RLTL changes, mean absolute RLTL change describes just the magnitude of change without considering its direction because we were interested to investigate if more change in either direction may be correlated with adverse effects. Figure S5 visualises the reasoning behind calculating these three measures of lifetime telomere length dynamics which are not surprisingly moderately correlated with one another (r ranged from -0.53 to 0.30, Figure S6). We used Cox proportional hazard models of productive lifespan that also included mean milk production as covariate and included mean RLTL, mean RLTL change and mean absolute RLTL change as explanatory variables first separately and then together to test their association with productive lifespan first separately, then while accounting for the effect of the other two measures. We have reported before that on average RLTL shortens in this population of dairy cattle within the first year of life while remaining relatively stable thereafter at the population level (Seeker et al., 2018; Seeker, et al., 2018). We were concerned that the initial RLTL attrition may contribute proportionally more to overall RLTL shortening in short-lived animals with less follow up samples which may explain a correlation of more telomere attrition with a shorter productive lifespan. To ensure the relationship was not entirely driven by this correlation, we tested all models again while excluding all measurements that were taken shortly after birth and then also while excluding all animals with less than three RLTL measurements. Lastly, we tested if the previously reported effect of RLTL at the age of one year on productive lifespan (Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Salvo-Chirnside, et al., 2018) remained statistically significant when tested in a Cox proportional hazard model together with milk productivity and mean RLTL change. 
 All statistical analyses were performed in R studio with R 3.1.3. (R Core Team, 2014). Mixed-effects models were implemented using the ‘lme4’ library (Bates, Mächler, Bolker, & Walker, 2015), while Cox proportional hazard models were implemented using the library survival (Therneau, 2015) and figures were generated with the library ‘ggplot2’ (Wickham, 2009).
 
 
@@ -112,7 +112,7 @@ mycoloursP<- c(mypal, mypal2, mypal3, mypal4)
 ```
 
 
-### Reasd in data
+### Read in data
 
 ```{r}
 
@@ -265,7 +265,7 @@ Animals varied in the amount and direction of RLTL change across consecutive mea
 ## Modelling
 
 ### Factors affecting telomere change
-We next ran a series of models to test whether known individual, genetic and environmental variables could explain variation in RLTL change. Only sample year was significant in these models; age in years, genetic group, feed group, birth year, the time difference between samplings in days, and the occurrence of a health event within two weeks of sampling were not significant (Table S1). However, when age was fitted a factor with two levels for animals younger or oler than 1 year, it became clear that younger anumals show significantly more telomere length attrition (Tables S2 and S3)
+We next ran a series of models to test whether known individual, genetic and environmental variables could explain variation in RLTL change. Only sample year was significant in these models; age in years, genetic group, feed group, birth year, the time difference between samplings in days, and the occurrence of a health event within two weeks of sampling were not significant (Table S1). However, when age was fitted a factor with two levels for animals younger or oler than 1 year, it became clear that younger anumals show significantly more telomere length attrition (Tables S2 and S3). Fitting age as a [covariate](#### Reduced model of RLTL change) (age in years) and not a [two-level factor](#### Reduced model of RLTL change with age as two level factor) lead to a slightly better although not statistically significant model fit and was therefore realised in all following models (AICs: -601.82 vs. -600.99). 
 
 #### Initial full model of RLTL change
 
@@ -330,44 +330,14 @@ anova(red_mod_fac)
 
 AIC(red_mod_fac)
 
-```
-
-```{r, echo = FALSE}
-
-#save tables:
-tableS1<-as.data.frame(round(coef(summary(init_mod)),3))
-tableS2<-as.data.frame(anova(init_mod))
-
-write.csv(tableS1, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS1.csv")
-
-write.csv(tableS2, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS2.csv")
-
-#save tables:
-tableS3<-as.data.frame(round(coef(summary(late_mod)),3))
-tableS4<-as.data.frame(anova(late_mod))
-
-write.csv(tableS3, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS3.csv")
-
-write.csv(tableS4, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS4.csv")
-
-#save tables:
-tableS5<-as.data.frame(round(coef(summary(red_mod)),3))
-tableS6<-as.data.frame(anova(red_mod))
-
-write.csv(tableS5, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS5.csv")
-
-write.csv(tableS6, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS6.csv")
-
-
-#save tables:
-tableS7<-as.data.frame(round(coef(summary(red_mod_fac)),3))
-tableS8<-as.data.frame(anova(red_mod_fac))
-
-write.csv(tableS7, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS7.csv")
-
-write.csv(tableS8, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS8.csv")
+anova(red_mod, red_mod_fac)
 
 ```
+
+
+We have previously shown that, on average across this population, RLTL declined over the first year of life but showed no systematic change with age thereafter (Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Salvo-Chirnside, et al., 2018; Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Bagnall, et al., 2018). Consistent with this, we found that average RLTL change across consecutive measurements was only significantly negative (indicating a tendency for attrition over time) when the first measurement was made close to birth and the follow up measurement at the age of around 1 year (Figure 1A, estimate= -0.115, SE= 0.01, t= -11.512, p<0.001; Table S3).
+
+
 
 ### Effect of milk productivity on RLTL change
 
@@ -393,18 +363,94 @@ anova(prod_mod)
 ```
 
 
-```{r, echo = FALSE}
+#### Analysis of change between first two measurements within first year and productive lifespan
 
-TableS9<-as.data.frame(round(coef(summary(prod_mod)),3))
-write.csv(TableS9, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/TableS9")
+```{r}
+init_change_dat<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/first_year_long_tel_cattle.csv")
 
-
-TableS10<-as.data.frame(anova(prod_mod))
-write.csv(TableS10, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/TableS10")
 ```
 
 
-We have previously shown that, on average across this population, RLTL declined over the first year of life but showed no systematic change with age thereafter (Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Salvo-Chirnside, et al., 2018; Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Bagnall, et al., 2018). Consistent with this, we found that average RLTL change across consecutive measurements was only significantly negative (indicating a tendency for attrition over time) when the first measurement was made close to birth and the follow up measurement at the age of around 1 year (Figure 1A, estimate= -0.115, SE= 0.01, t= -11.512, p<0.001; Table S3).
+##### Histogram of change in telomere length within the first year of life
+```{r}
+ggplot(init_change_dat, aes(x=init_change_dat$ResDiff)) +geom_histogram(colour= "black", fill = mycoloursP[6])+ xlab("Initial RLTL change") + theme_classic(20)+  
+  geom_vline(xintercept= mean(as.numeric(paste(init_change_dat$ResDiff))), colour="red") +
+  annotate("text", x = -0.7, y = 28, label = "(*)", fontface =2, size= 10) +
+	stat_function(
+		fun = function(x, mean, sd, n){
+			 n/23 * dnorm(x = x, mean = mean, sd = sd)
+		}, 
+		args = with(init_change_dat, c(mean = mean(as.numeric(paste(init_change_dat$ResDiff))), 
+		                         sd = sd(as.numeric(paste(init_change_dat$ResDiff))), 
+		                         n= length(as.numeric(paste(init_change_dat$ResDiff))))))
+
+```
+
+##### Statistical normality tests
+```{r}
+shapiro.test(init_change_dat$ResDiff)
+ks.test(init_change_dat$ResDiff, pnorm)
+qqnorm(init_change_dat$ResDiff)
+```
+
+
+##### Cox-proportional hazard model of productive lifespan 
+```{r}
+coxFit<-coxph(Surv(as.numeric(paste(init_change_dat$TimeMeasure)), init_change_dat$Event == 1)~init_change_dat$ResDiff)
+
+summary(coxFit)
+
+```
+
+##### change telomere change measure to discrete scale to allow for plotting
+
+```{r}
+ggplot(init_change_dat, aes(x=as.factor(init_change_dat$ResDiff_3G), y=init_change_dat$ResDiff)) + geom_boxplot() +xlab("RLTL change tertiles") + ylab("RLTL change")+ theme_classic(20)+ geom_jitter()
+
+
+```
+
+##### Cox proportional hazard model on discrete scale change measurements
+```{r}
+
+coxFit<-coxph(Surv(init_change_dat$TimeMeasure, init_change_dat$Event == 1)~init_change_dat$ResDiff_3G)
+
+summary(coxFit)
+
+coxFit<-survfit(Surv(init_change_dat$TimeMeasure, init_change_dat$Event == 1)~init_change_dat$ResDiff_3G)
+summary(coxFit)
+
+```
+
+
+##### Plot discrete measures
+```{r}
+g1<- ggsurvplot(coxFit, data=init_change_dat, pval = 0.006, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (most RLTL attrition)", "Tertile 2", "Tertile 3 (least RLTL attrition"))+ guides(colour = guide_legend(nrow = 3))+theme_survminer(40)
+
+  
+ggsurvplot(coxFit, data=init_change_dat, pval = 0.006, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (most RLTL attrition)", "Tertile 2", "Tertile 3 (least RLTL attrition"))+theme_survminer(40)
+
+
+#ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/InitialChange.pdf", print(g1))
+```
+
+
+
+
+#### Individual longitudinal RLTL data of animals with more than seven measurements
+
+```{r}
+spaghettiData<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/RC_SpaghettiData.csv")
+
+
+ggplot(data = spaghettiData, aes(x = age_y, y = residual_rltl_t, group = recoded_id))+geom_point()+ geom_line()+facet_grid(.~recoded_id)+ 
+  xlab("Age in years") + ylab("RLTL residuals")
+
+```
+
+
+
+
 
 ### Correlation between subsquent measurements
 ```{r, fig.width= 8, fig.height= 4}
@@ -437,16 +483,7 @@ The relationship between mean RLTL change and productive lifespan was robust to 
 
 
 
-spaghetti plot for animals with more than seven RLTL measurements for supplementary figure S4:
 
-```{r}
-spaghettiData<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/RC_SpaghettiData.csv")
-
-
-ggplot(data = spaghettiData, aes(x = age_y, y = residual_rltl_t, group = recoded_id))+geom_point()+ geom_line()+facet_grid(.~recoded_id)+ 
-  xlab("Age in years") + ylab("RLTL residuals")
-
-```
 
 
 ```{r}
@@ -592,9 +629,10 @@ variable<- as.numeric(paste(uDeadData$herd_life))
 meanHL<-mean(as.numeric(paste(uDeadData$herd_life)))
 
 
-ggplot(uDeadData, aes(x = as.numeric(paste(uDeadData$herd_life)))) + 
+prod_lsp_plot <- ggplot(uDeadData, aes(x = as.numeric(paste(uDeadData$herd_life)))) + 
 	geom_histogram(colour= "black", fill = mycoloursP[4]) + xlab("Productive lifespan in days") +  
-  geom_vline(xintercept= mean(as.numeric(paste(uDeadData$herd_life))), colour="red") + theme_bw(20) +
+  geom_vline(xintercept= mean(as.numeric(paste(uDeadData$herd_life))), colour="red")+
+  annotate("text", x = 0, y = 17.5, label = "(D)", fontface =2, size= 10) + theme_classic(20) +
 	stat_function(
 		fun = function(x, mean, sd, n){
 			 n*120 * dnorm(x = x, mean = mean, sd = sd)
@@ -604,6 +642,7 @@ ggplot(uDeadData, aes(x = as.numeric(paste(uDeadData$herd_life)))) +
 		                         n= length(as.numeric(paste(uDeadData$herd_life))))))
 
 
+prod_lsp_plot
 
 # statistical tests for normal distribution of RTL measurements
 shapiro.test(variable)
@@ -613,7 +652,13 @@ qqnorm(variable)
 
 
 
+Assemble plots for supplemenrary file
 
+```{r, fig.height = 6, fig.width = 10, fig.cap= "Histograms of (A) Number of RLTL measurements per animal, (B) RLTL residuals after correcting for qPCR plate and row, (C) measurement to measurement change in RLTL residuals (after correcting for qPCR plate and row) and (D) productive lifespan in days; Red lines indicate mean."}
+
+grid.arrange(hist1, hist2, hist3, prod_lsp_plot, ncol=2)
+
+```
 
 
 
@@ -1001,202 +1046,25 @@ AdjHLplot
 ```
 
 
-## Analysis of change between first two measurements within first year and produrctive lifespan:
 
-### Prepare data
-```{r, echo = FALSE}
 
-##############################
-##############################
-################################
 
-# needs lots of work!!!!
-
-df<-data.frame(recoded_id=unique(data$recoded_id))
-
-RLTL0<-subset(data, data$age_y==0)
-RLTL1<-subset(data, data$age_y==1)
-
-df2<-data.frame(recoded_id=RLTL0$recoded_id, RLTL0=RLTL0$residual_rltl_t, S_date0=RLTL0$sample_date, herd_life= RLTL0$herd_life, cull_date=RLTL0$cull_date, dob=RLTL0$dob, tel_sample_no= RLTL0$tel_sample_no)
-
-df3<-data.frame(recoded_id=RLTL1$recoded_id, RLTL1=RLTL1$residual_rltl_t, S_date1=RLTL1$sample_date)
-
-InData<-merge(df, df2, by="recoded_id")
-InData2<-merge(InData, df3, by="recoded_id")
-
-InData2$sample_interval= as.Date(InData2$S_date1, "%d/%m/%Y")-as.Date(InData2$S_date0, "%d/%m/%Y")
-InData2$sInt<-as.numeric(InData2$sample_interval)
-InData2$CutoffDate<-"01/01/2017"
-InData2$Event<-ifelse(InData2$cull_date=="NULL",0,1)
-InData2$TimeMeasure<-ifelse(InData2$Event==0, as.Date(InData2$CutoffDate, "%d/%m/%Y")- as.Date(InData2$dob, "%d/%m/%Y"), as.numeric(paste(InData2$herd_life)))
-nrow(InData2)
-
-InData2$ResDiff<- InData2$RLTL1-InData2$RLTL0
-InData2$ChangeRate<-InData2$ResDiff/InData2$sInt
-
-InData2$ResDiff_4G<-ifelse(InData2$ResDiff <= quantile(InData2$ResDiff)[2], 1, ifelse(InData2$ResDiff<= quantile(InData2$ResDiff)[3], 2, ifelse(InData2$ResDiff<= quantile(InData2$ResDiff)[4], 3, 4)))
-
-InData2$ResDiff_3G<-ntile(InData2$ResDiff,3)
-
-InData2$ResDiff_2G<-ifelse(InData2$ResDiff<= median(InData2$ResDiff),1,2)
-```
+#### Cox proportional hazard model of productive lifespan with average lifetime RLTL as predictor 
 
 ```{r}
+coxData<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/cox_data.csv")
 
-# for the linear model, I have to exclude animals with no clear phenotype, which means animals that were still alive at the 1.1.2017 are excluded
-InData2Dead<-subset(InData2, InData2$herd_life!="NULL")
 
-mod4<-glm(as.numeric(paste(InData2Dead$herd_life))~ InData2Dead$ChangeRate)
-          
-summary(mod4)
-
-```
-
-```{r}
-
-inDf<-as.data.frame(round(coef(summary(mod4)),3))
-#write.csv(inDf, "/Users/luiseseeker/Desktop/PNAS/InitialChange.csv")
-
-
-mod4b<-glm(as.numeric(paste(InData2Dead$herd_life))~ InData2Dead$ResDiff)
-          
-summary(mod4b)
-
-```
-
-```{r}
-inDfb<-as.data.frame(round(coef(summary(mod4b)),3))
-#write.csv(inDfb, "/Users/luiseseeker/Desktop/PNAS/InitialChange_b.csv")
-
-
-#For a cox proportional harzard analysis, I don't have to exclude animals that are still alive which may increase the statistical power. 
-
-
-
-#early life measurements (at 0 years of age and 1 year of age) 
-InChange<-as.numeric(paste(InData2$ResDiff))
-hist(InChange)
-coxFit<-coxph(Surv(InData2$TimeMeasure, InData2$Event == 1)~InData2$ResDiff)
-
-summary(coxFit)
-
-```
-
-
-```{r}
-ggplot(InData2, aes(x=InData2$ResDiff)) +geom_histogram(colour= "black", fill = mycoloursP[4])+ xlab("Initial RLTL change") + theme_classic(20)
-
-```
-
-
-```{r}
-
-# change on discrete change to plot
-coxFit<-coxph(Surv(InData2$TimeMeasure, InData2$Event == 1)~InData2$ResDiff_3G)
-
-summary(coxFit)
-
-coxFit<-survfit(Surv(InData2$TimeMeasure, InData2$Event == 1)~InData2$ResDiff_3G)
-summary(coxFit)
-
-```
-
-
-```{r}
-
-write.csv(InData2, "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/rawdata/CalfSurv.csv")
-#### plot results for discrete scale
-
-#ggsurvplot gives p-values that are different to the ones above calculated with coxph. I don't know where they are taken from therefor decided to report the ones I understand, the ones calculated with coxph:
-
-g1<- ggsurvplot(coxFit, data=InData2, pval = 0.006, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (most RLTL attrition)", "Tertile 2", "Tertile 3 (least RLTL attrition"))+ guides(colour = guide_legend(nrow = 3))+theme_survminer(40)
-
-  
-ggsurvplot(coxFit, data=InData2, pval = 0.006, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (most RLTL attrition)", "Tertile 2", "Tertile 3 (least RLTL attrition"))+theme_survminer(40)
-
-
-ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/InitialChange.pdf", print(g1))
-
-
-#in response to editor plot as dotplot
-dInData<-subset(InData2, InData2$cull_date != "NULL")
-
-ggplot(dInData, aes(x=as.numeric(paste(dInData$herd_life)), y= ResDiff)) + geom_point() + xlab("productive life span")+ylab("RLTL change")+ geom_smooth(method="lm", formula = y~x, se=TRUE)+ theme_grey(20)
-```
-
-
-```{r}
-ggplot(InData2, aes(x=as.factor(InData2$ResDiff_3G), y=InData2$ResDiff)) + geom_boxplot() +xlab("RLTL change tertiles") + ylab("RLTL change")+ theme_light(20)+ geom_jitter()
-
-
-```
-
-```{r}
-uRedData<-redData[!duplicated(redData$recoded_id),] 
-
-
-
-coxData<-data.frame(recoded_id=uRedData$recoded_id, dob=uRedData$dob, herd_life=uRedData$herd_life, cull_date=uRedData$cull_date, average_resid=uRedData$average_resid, rltl_change=uRedData$rltl_change, abs_rltl_change=uRedData$abs_rltl_change, amp_305_lactation=uRedData$amp_305_lactation, RLTL_1=uRedData$RLTL_1)
-
-
-#extract maximum sample number per animal and create a data frame that only contains the ear tag and the associated maximum sample number.
-
-sampleNo<-data.frame(recoded_id= redData$recoded_id, tel_sample_no= redData$tel_sample_no)
-
-
-maxSN<-data.frame(tapply(sampleNo$tel_sample_no, sampleNo$recoded_id, function(x){which.max(x)}))
-nrow(maxSN)
-
-
-names(maxSN)<-"totalTELnumber"
-
-rownames(maxSN)
-
-maxSN$recoded_id<-rownames(maxSN)
-rownames(maxSN)<-c()
-
-head(maxSN)
-
-###
-
-coxData<-merge(coxData, maxSN, by = "recoded_id")
-
-
-
-
-
-coxData$CutoffDate<-"01/01/2017"
-coxData$Event<-ifelse(coxData$cull_date=="NULL", 0, 1)
-coxData$TimeMeasure<-ifelse(coxData$Event==0, as.Date(coxData$CutoffDate, "%d/%m/%Y")- as.Date(coxData$dob, "%d/%m/%Y"), as.numeric(paste(coxData$herd_life)))
-
-#add groups for all lifelong change measurements that are split at the median
-coxData$AverageResi_2G<-ifelse(coxData$average_resid <= median(coxData$average_resid), 1, 2)
-coxData$rltl_change_2G<-ifelse(coxData$rltl_change <= median (coxData$rltl_change), 1, 2 )
-coxData$abs_rltl_change_2G<-ifelse(coxData$abs_rltl_change <= median (coxData$abs_rltl_change), 1, 2 )
-
-#split at quartiles
-Q1<-quantile(coxData$average_resid)
-
-coxData$AverageResi_4G<-ifelse(coxData$average_resid <= quantile(coxData$average_resid)[2], 1, ifelse(coxData$average_resid <= quantile(coxData$average_resid)[3], 2, ifelse(coxData$average_resid <= quantile(coxData$average_resid)[4], 3, 4)))
-
-coxData$rltl_change_4G<-ifelse(coxData$rltl_change <= quantile(coxData$rltl_change)[2], 1, ifelse(coxData$rltl_change <= quantile(coxData$rltl_change)[3], 2, ifelse(coxData$rltl_change<= quantile(coxData$rltl_change)[4], 3, 4)))
-
-coxData$abs_rltl_change_4G<-ifelse(coxData$abs_rltl_change <= quantile(coxData$abs_rltl_change)[2], 1, ifelse(coxData$abs_rltl_change <= quantile(coxData$abs_rltl_change)[3], 2, ifelse(coxData$abs_rltl_change<= quantile(coxData$abs_rltl_change)[4], 3, 4)))
-
-
-coxData$average_resid_3G<-ntile(coxData$average_resid,3)
-coxData$rltl_change_3G<-ntile(coxData$rltl_change,3)
-coxData$abs_rltl_change_3G<-ntile(coxData$abs_rltl_change,3)
-
-# models:
-##Average lifetime telomere length
-### condinuous variable:
 coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$average_resid)
 
 summary(coxFit)
 
 summary(coxFit)$logtest["pvalue"]
 
+```
+
+##### Change to discrete scale to enable plotting
+```{r}
 ### discrete scale
 
 coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$average_resid_3G)
@@ -1204,65 +1072,35 @@ summary(coxFit)
 
 coxFit<-survfit(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$average_resid_3G)
 
+```
 
+##### Plot relationship of mean average RLTL and productive lifespan
+```{r}
 
 #### plot results for discrete scale
-
-g2<-ggsurvplot(coxFit, data=coxData, pval = 0.858, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table = FALSE, legend.labs=c("Tertile 1 (shortest mean RLTL)", "Tertile 2", "Tertile 3 (longest mean RLTL)"))+theme_survminer(40)+ guides(colour = guide_legend(nrow = 3))
-
-ggsurvplot(coxFit, data=coxData, pval = 0.858, risk.table.y.text.col = T, risk.table = TRUE, legend.labs=c("Tertile 1 (shortest mean RLTL)", "Tertile 2", "Tertile 3 (longest mean RLTL)"))+ guides(colour = guide_legend(nrow = 3))+ theme_survminer(10)
-
-
-#ggsurvplot gives p-values that are different to the ones above calculated with coxph. I don't know where they are taken from therefor decided to report the ones I understand, the ones calculated with coxph:
 
 ggsurvplot(coxFit, data=coxData, pval = 0.858, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = TRUE, legend.labs=c("Tertile 1 (shortest mean RLTL)", "Tertile 2", "Tertile 3 (longest mean RLTL)"))+theme_survminer(40)
 
 ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/MeanRLTL.pdf", print(g2))
 
-
-
 write.csv(coxData, "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/rawdata/CaxData.csv")
-
-
-
-#in response to editor plot as dotplot
-dData<-subset(coxData, coxData$cull_date != "NULL")
-
-ggplot(dData, aes(x=as.numeric(paste(dData$herd_life)), y= rltl_change)) + geom_point() + xlab("productive life span")+ylab("Mean RLTL change")+ geom_smooth(method="lm", formula = y~x, se=TRUE)+ theme_grey(20)
-
-ggplot(dData, aes(x=as.numeric(paste(dData$herd_life)), y= rltl_change)) + geom_point() + xlab("productive life span")+ylab("Mean RLTL change")+ theme_grey(20)
-
-ggplot(dData, aes(x=as.numeric(paste(dData$herd_life)), y= abs_rltl_change)) + geom_point() + xlab("productive life span")+ylab("Mean absolute RLTL change")+ theme_grey(20) +geom_smooth(method="lm", formula = y~x, se=TRUE)
-
-ggplot(dData, aes(x=as.numeric(paste(dData$herd_life)), y= average_resid)) + geom_point() + xlab("productive life span")+ylab("Mean RLTL")+ theme_grey(20) +geom_smooth(method="lm", formula = y~x, se=TRUE)
-
-
-cor.test(as.numeric(paste(dData$herd_life)), dData$abs_rltl_change)
 ```
 
 
+
+#### Simple correlations of herd life with lifetime RLTL measures
+
+They show the same as Cox proportional hazard models. 
 ```{r}
-## continuous scale
-coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$abs_rltl_change)
+cor.test(as.numeric(paste(dData$herd_life)), dData$abs_rltl_change)
 
-summary(coxFit)
+cor.test(as.numeric(paste(dData$herd_life)), dData$rltl_change)
 
-### discrete scale
-coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$abs_rltl_change_4G)
-
-summary(coxFit)
-
-
-coxFit<-survfit(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$abs_rltl_change_4G)
-
-
-#### plot results for discrete scale
-
-ChangeQuart<-ggsurvplot(coxFit, data=coxData, pval = TRUE, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Quartile 1 (least RLTL change)", "Quartile 2", "Quartile 3", "Quartile 4 (most RLTL change)"))+theme_survminer(40)+ guides(colour = guide_legend(nrow = 3))
-
-ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/ChangeQuartRLTL.pdf", print(ChangeQuart))
-
+cor.test(as.numeric(paste(dData$herd_life)), dData$average_resid)
 ```
+
+
+
 
 ```{r}
 
@@ -1294,16 +1132,6 @@ coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$rltl_change)
 
 summary(coxFit)
 
-### discrete scale
-coxFit<-survfit(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$rltl_change_4G)
-
-summary(coxFit)
-
-#### plot results for discrete scale
-
-attr<-ggsurvplot(coxFit, data=coxData, pval = TRUE, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Quartile 1 (most RLTL attrition)", "Quartile 2", "Quartile 3", "Quartile 4 (least RLTL attrition)")) +theme_survminer(40)
-
-ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/RLTLattrition.pdf", print(attr))
 
 ```
 
@@ -1342,19 +1170,31 @@ ggplot(coxData, aes(x=as.factor(coxData$rltl_change_3G), y= rltl_change))+geom_b
 ggplot(coxData, aes(x=as.factor(coxData$average_resid_3G), y= average_resid))+geom_boxplot()+ xlab("Mean RLTL tertile") + ylab("Mean RLTL")+ theme_light(20)+ geom_jitter()
 ```
 
+
+#### RLTL at the age of 1 year and productive lifespan
 ```{r}
 
 
-coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$RLTL_1)
+coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$av_rltl_1_res)
 
 summary(coxFit)
 
+```
 
+#### All three measures of lifetime RLTL dynamics and productive lifespan
+
+```{e}
 coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$rltl_change+ coxData$average_resid+ coxData$abs_rltl_change)
 
 summary(coxFit)
 
-#now I will include average milk production
+```
+
+
+
+#### Including average milk production
+
+```{r}
 
 coxDataR<-subset(coxData, coxData$amp_305_lactation != "NULL")
 
@@ -1363,57 +1203,86 @@ coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$average_r
 
 summary(coxFit)
 
+```
+
+
+```{R}
 
 coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$abs_rltl_change+ as.numeric(paste(coxDataR$amp_305_lactation))+coxDataR$totalTELnumber)
 
 summary(coxFit)
 
+```
+
+
+```{r}
 
 coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$rltl_change+ as.numeric(paste(coxDataR$amp_305_lactation))+coxDataR$totalTELnumber)
 
 summary(coxFit)
  
+```
 
-coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$RLTL_1 + as.numeric(paste(coxDataR$amp_305_lactation))+ coxDataR$totalTELnumber)
+
+````{r}
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$av_rltl_1_res + as.numeric(paste(coxDataR$amp_305_lactation))+ coxDataR$totalTELnumber)
 
 summary(coxFit)
 
 #total TEL sample number was not significant and therefore will be eliminated:
 
+
+
+```
+
+
+I THINK I SHOULD USE THE MODELS BELOW
+```{r}
 coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$average_resid+ as.numeric(paste(coxDataR$amp_305_lactation)))
 
 summary(coxFit)
 
+```
 
+
+```{r}
 coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$abs_rltl_change+ as.numeric(paste(coxDataR$amp_305_lactation)))
 
 summary(coxFit)
 
+```
 
+
+```{r}
 coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$rltl_change+ as.numeric(paste(coxDataR$amp_305_lactation)))
 
 summary(coxFit)
 
+```
 
-
-#try RLTL at the age of 1 year in the same model
-
-coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$rltl_change+ coxDataR$RLTL_1+ as.numeric(paste(coxDataR$amp_305_lactation)))
-
-summary(coxFit)
-
-
-
-coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$RLTL_1 + as.numeric(paste(coxDataR$amp_305_lactation)))
+##### test RLTL at the age of 1 year in the same model as mean RLTL change
+```{r}
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$rltl_change+ coxDataR$av_rltl_1_res+ as.numeric(paste(coxDataR$amp_305_lactation)))
 
 summary(coxFit)
 
-#all three measures in the same model:
+```
+
+
+###### All three measures of lifetime RLTL dynamics in the same model including milk productivity measure:
+```{r}
+
 coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$rltl_change+coxDataR$average_resid+coxDataR$abs_rltl_change+ as.numeric(paste(coxDataR$amp_305_lactation)))
 
 summary(coxFit)
 
-#Now I try the same without the fist measurement. 
+```
+
+#N#### Repeat Cox proportional hazard model without without the fist measurement.
+
+
+```{r}
+ 
 uRedDataL<- redDataLnew[!duplicated(redDataLnew$recoded_id),]
 
 coxDataL<-data.frame(recoded_id=uRedDataL$recoded_id, dob=uRedDataL$dob, herd_life=uRedDataL$herd_life, cull_date=uRedDataL$cull_date, average_resid=uRedDataL$average_resid, rltl_change=uRedDataL$rltl_change, abs_rltl_change=uRedDataL$abs_rltl_change, amp_305_lactation= uRedDataL$amp_305_lactation)
@@ -1473,7 +1342,7 @@ See if relationship remains statistically significant when only animals with mor
 
 ```{r}
 
-coxData2<-data.frame(recoded_id=uDeadDataMore2$recoded_id, dob=uDeadDataMore2$dob, herd_life=uDeadDataMore2$herd_life, cull_date=uDeadDataMore2$cull_date, average_resid=uDeadDataMore2$average_resid, rltl_change=uDeadDataMore2$rltl_change, abs_rltl_change=uDeadDataMore2$abs_rltl_change, amp_305_lactation=uDeadDataMore2$amp_305_lactation, RLTL_1=uDeadDataMore2$RLTL_1)
+coxData2<-data.frame(recoded_id=uDeadDataMore2$recoded_id, dob=uDeadDataMore2$dob, herd_life=uDeadDataMore2$herd_life, cull_date=uDeadDataMore2$cull_date, average_resid=uDeadDataMore2$average_resid, rltl_change=uDeadDataMore2$rltl_change, abs_rltl_change=uDeadDataMore2$abs_rltl_change, amp_305_lactation=uDeadDataMore2$amp_305_lactation, av_rltl_1_res=uDeadDataMore2$av_rltl_1_res)
 
 
 #add maximum sample number 
@@ -1539,25 +1408,24 @@ meanVar<-mean(variable, na.rm= TRUE)
 sdVar<-sd(variable, na.rm=TRUE)
 
 ggplot(data, aes(x = variable)) + 
-	geom_histogram(colour= "black", fill = "yellow") + xlab("Sample interval in days") +   geom_vline(xintercept= meanVar,  colour="red")+
-  theme_gray(20)
+	geom_histogram(colour= "black", fill = mycoloursP[7]) + xlab("Sample interval in days") +   geom_vline(xintercept= meanVar,  colour="red")+
+  theme_classic(20)
+```
 
-  #+
-	#stat_function(
-	#	fun = function(x, mean, sd, n){
-	#		 n*50* dnorm(x = x, mean = mean, sd = sd)
-	#	}, 
-	#	args = with(data, c(mean = meanVar, sd = sdVar, n = length(variable))))
 
+```{r}
 
 uData<-data[!duplicated(data$recoded_id),]
 
 variable<-as.factor(paste(uData$birth_year))
 
 ggplot(uData, aes(x = variable)) + 
-	geom_bar(colour= "black", fill = "yellow") + xlab("Birth year")+ theme_gray(20)
+	geom_bar(colour= "black", fill = mycoloursP[8]) + xlab("Birth year")+ theme_classic(20)
+
+```
 
 
+```{r}
 #Average milk production
 
 variable<-as.numeric(paste(uData$amp_305_lactation))
@@ -1565,42 +1433,56 @@ meanVar<-mean(variable, na.rm= TRUE)
 sdVar<-sd(variable, na.rm=TRUE)
 
 ggplot(uData, aes(x = variable)) + 
-	geom_histogram(colour= "black", fill = "yellow") + xlab("Average milk production") +   geom_vline(xintercept= meanVar,  colour="red")+
-  theme_gray(20)
+	geom_histogram(colour= "black", fill = mycoloursP[9]) + xlab("Average milk production") +   geom_vline(xintercept= meanVar,  colour="red")+
+  theme_classic(20)
 
+```
+
+
+```{r}
 # cull reasons
 
-variable<-as.factor(paste(uDeadData$cull_reson))
+variable<-as.factor(paste(uDeadData$cull_reason))
 
 ggplot(uDeadData, aes(x = variable)) + 
-	geom_bar(colour= "black", fill = "yellow") + xlab("Cull reason")+
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+	geom_bar(colour= "black", fill = mycoloursP[10]) + xlab("Cull reason") +
+  theme_classic(10)+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
+
+  
+```
+
+```{r}
 # fertility events
 newdata <- subset(uData, uData$health_event_fertil_all != "NULL") 
 variable<-as.integer(paste(newdata$health_event_fertil_all))
 
 ggplot(newdata, aes(x = variable)) + 
-	geom_bar(colour= "black", fill = "yellow") + xlab("Fertility events")+
-  theme_gray(20)+
+	geom_bar(colour= "black", fill = mycoloursP[11]) + xlab("Fertility events")+
+  theme_classic(20)+
   scale_x_continuous(breaks=c(0:12))
+```
 
+```{r}
 #mastitis events
 newdata <- subset(uData, uData$health_event_mastitis_all != "NULL") 
 variable<-as.integer(paste(newdata$health_event_mastitis_all))
 
 ggplot(newdata, aes(x = variable)) + 
-	geom_bar(colour= "black", fill = "yellow") + xlab("Mastitis events")+
-  theme_gray(20)+
+	geom_bar(colour= "black", fill = mycoloursP[12]) + xlab("Mastitis events")+
+  theme_classic(20)+
   scale_x_continuous(breaks=c(0:8))
+```
 
+```{r}
 #lameness events
 newdata <- subset(uData, uData$health_event_lame_all != "NULL") 
 variable<-as.integer(paste(newdata$health_event_lame_all))
 
 ggplot(newdata, aes(x = variable)) + 
-	geom_bar(colour= "black", fill = "yellow") + xlab("Lameness events")+
-  theme_gray(20)+
+	geom_bar(colour= "black", fill = mycoloursP[13]) + xlab("Lameness events")+
+  theme_classic(20)+
   scale_x_continuous(breaks=c(0:11))
 
 ```
@@ -1769,6 +1651,54 @@ The complete dataset will be accessible after acceptance on GitHub.
 All authors designed the experiment together. LS, SU, RW, JF, RH and AB collected the blood samples and processed them in the lab. LS analysed the data with help from HF, JI, AP, GB and DN. LS wrote the initial draft of the manuscript, DN and GB edited. All authors were involved in revising the manuscript. BW, MC, GB and DN obtained funding for the project. 
 
 
+# saving data
+
+```{r, echo = FALSE}
+
+#save tables:
+tableS1<-as.data.frame(round(coef(summary(init_mod)),3))
+tableS2<-as.data.frame(anova(init_mod))
+
+write.csv(tableS1, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS1.csv")
+
+write.csv(tableS2, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS2.csv")
+
+#save tables:
+tableS3<-as.data.frame(round(coef(summary(late_mod)),3))
+tableS4<-as.data.frame(anova(late_mod))
+
+write.csv(tableS3, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS3.csv")
+
+write.csv(tableS4, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS4.csv")
+
+#save tables:
+tableS5<-as.data.frame(round(coef(summary(red_mod)),3))
+tableS6<-as.data.frame(anova(red_mod))
+
+write.csv(tableS5, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS5.csv")
+
+write.csv(tableS6, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS6.csv")
+
+
+#save tables:
+tableS7<-as.data.frame(round(coef(summary(red_mod_fac)),3))
+tableS8<-as.data.frame(anova(red_mod_fac))
+
+write.csv(tableS7, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS7.csv")
+
+write.csv(tableS8, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS8.csv")
+
+```
+
+```{r, echo = FALSE}
+
+TableS9<-as.data.frame(round(coef(summary(prod_mod)),3))
+write.csv(TableS9, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/TableS9")
+
+
+TableS10<-as.data.frame(anova(prod_mod))
+write.csv(TableS10, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/TableS10")
+```
 
 
 

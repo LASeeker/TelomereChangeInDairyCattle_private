@@ -88,7 +88,7 @@ ETA$abs_rltl_change <- tapply(abs_diff, redData$recoded_id, mean)
 nrow(ETA)
 
 
-data<-merge(data, ET, by="recoded_id", all=TRUE)
+data<-merge(data, ETA, by="recoded_id", all=TRUE)
 #names(data)
 nrow(data)
 names(data)
@@ -102,6 +102,29 @@ names(data)
 
 data$AgeGroup<-ifelse(data$age_d<365, "young", "older")
 
+```
+
+### Add RLTL at the age of 1
+
+```{r}
+
+rltl_1<-subset(data, data$age_y == 1)
+nrow(rltl_1)
+
+rltl_1_df<- data.frame(recoded_id = rltl_1$recoded_id, rltl_1_res = rltl_1$residual_rltl_t )
+
+#some animals may have more than 1 measurement around 1 year of age... average for those
+
+av_meas<-as.data.frame(tapply(rltl_1$residual_rltl_t , rltl_1$recoded_id, mean))
+colnames(av_meas)<-"av_rltl_1_res"
+av_meas$recoded_id <-rownames(av_meas)
+
+
+
+data<-merge(data, av_meas, by = "recoded_id", all.x = TRUE)
+
+nrow(data)
+names(data)
 ```
 
 ### Calculate sample number per animal
@@ -132,13 +155,6 @@ names(data)
 ```
 
 
-```{r}
-colnames(data)[30]<-"average_resid"
-
-names(data)
-
-data<-data[, !(colnames(data) %in% c("average_resid.y" ))]
-```
 
 
 
@@ -148,4 +164,116 @@ data<-data[, !(colnames(data) %in% c("average_resid.y" ))]
 write.csv(data, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/LongTelomereDataCattle.csv" )
 
 
+```
+
+
+# Create calf input data
+
+### Prepare data
+```{r, echo = FALSE}
+
+##############################
+##############################
+################################
+
+# needs lots of work!!!!
+
+df<-data.frame(recoded_id=unique(data$recoded_id))
+
+RLTL0<-subset(data, data$age_y==0)
+RLTL1<-subset(data, data$age_y==1)
+
+df2<-data.frame(recoded_id=RLTL0$recoded_id, RLTL0=RLTL0$residual_rltl_t, S_date0=RLTL0$sample_date, herd_life= RLTL0$herd_life, cull_date=RLTL0$cull_date, dob=RLTL0$dob, tel_sample_no= RLTL0$tel_sample_no)
+
+df3<-data.frame(recoded_id=RLTL1$recoded_id, RLTL1=RLTL1$residual_rltl_t, S_date1=RLTL1$sample_date)
+
+InData<-merge(df, df2, by="recoded_id")
+InData2<-merge(InData, df3, by="recoded_id")
+
+InData2$sample_interval= as.Date(InData2$S_date1, "%d/%m/%Y")-as.Date(InData2$S_date0, "%d/%m/%Y")
+InData2$sInt<-as.numeric(InData2$sample_interval)
+InData2$CutoffDate<-"01/01/2017"
+InData2$Event<-ifelse(InData2$cull_date=="NULL",0,1)
+InData2$TimeMeasure<-ifelse(InData2$Event==0, as.Date(InData2$CutoffDate, "%d/%m/%Y")- as.Date(InData2$dob, "%d/%m/%Y"), as.numeric(paste(InData2$herd_life)))
+nrow(InData2)
+
+InData2$ResDiff<- InData2$RLTL1-InData2$RLTL0
+#InData2$ChangeRate<-InData2$ResDiff/InData2$sInt
+
+#InData2$ResDiff_4G<-ifelse(InData2$ResDiff <= quantile(InData2$ResDiff)[2], 1, ifelse(InData2$ResDiff<= quantile(InData2$ResDiff)[3], 2, ifelse(InData2$ResDiff<= quantile(InData2$ResDiff)[4], 3, 4)))
+
+InData2$ResDiff_3G<-ntile(InData2$ResDiff,3)
+
+#InData2$ResDiff_2G<-ifelse(InData2$ResDiff<= median(InData2$ResDiff),1,2)
+
+
+write.csv(InData2, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/first_year_long_tel_cattle.csv" )
+```
+
+
+
+### Generate Cox data
+```{r}
+redData<-subset(data, data$residual_rltl_tminus1 != "NULL")
+uRedData<-redData[!duplicated(redData$recoded_id),] 
+
+
+
+coxData<-data.frame(recoded_id=uRedData$recoded_id, dob=uRedData$dob, herd_life=uRedData$herd_life, cull_date=uRedData$cull_date, average_resid=uRedData$average_resid, rltl_change=uRedData$rltl_change, abs_rltl_change=uRedData$abs_rltl_change, amp_305_lactation=uRedData$amp_305_lactation, av_rltl_1_res=uRedData$av_rltl_1_res)
+
+
+#extract maximum sample number per animal and create a data frame that only contains the recoded is and the associated maximum sample number.
+
+sampleNo<-data.frame(recoded_id= redData$recoded_id, tel_sample_no= redData$tel_sample_no)
+
+
+maxSN<-data.frame(tapply(sampleNo$tel_sample_no, sampleNo$recoded_id, function(x){which.max(x)}))
+nrow(maxSN)
+
+
+names(maxSN)<-"totalTELnumber"
+
+rownames(maxSN)
+
+maxSN$recoded_id<-rownames(maxSN)
+rownames(maxSN)<-c()
+
+head(maxSN)
+
+```
+
+
+```{r}
+
+coxData<-merge(coxData, maxSN, by = "recoded_id")
+
+
+nrow(coxData)
+
+
+coxData$CutoffDate<-"01/01/2017"
+coxData$Event<-ifelse(coxData$cull_date=="NULL", 0, 1)
+coxData$TimeMeasure<-ifelse(coxData$Event==0, as.Date(coxData$CutoffDate, "%d/%m/%Y")- as.Date(coxData$dob, "%d/%m/%Y"), as.numeric(paste(coxData$herd_life)))
+
+#add groups for all lifelong change measurements that are split at the median
+#coxData$AverageResi_2G<-ifelse(coxData$average_resid <= median(coxData$average_resid), 1, 2)
+#coxData$rltl_change_2G<-ifelse(coxData$rltl_change <= median (coxData$rltl_change), 1, 2 )
+#coxData$abs_rltl_change_2G<-ifelse(coxData$abs_rltl_change <= median (coxData$abs_rltl_change), 1, 2 )
+
+#split at quartiles
+#Q1<-quantile(coxData$average_resid)
+
+#coxData$AverageResi_4G<-ifelse(coxData$average_resid <= quantile(coxData$average_resid)[2], 1, ifelse(coxData$average_resid <= quantile(coxData$average_resid)[3], 2, ifelse(coxData$average_resid <= quantile(coxData$average_resid)[4], 3, 4)))
+
+#coxData$rltl_change_4G<-ifelse(coxData$rltl_change <= quantile(coxData$rltl_change)[2], 1, ifelse(coxData$rltl_change <= quantile(coxData$rltl_change)[3], 2, ifelse(coxData$rltl_change<= quantile(coxData$rltl_change)[4], 3, 4)))
+
+#coxData$abs_rltl_change_4G<-ifelse(coxData$abs_rltl_change <= quantile(coxData$abs_rltl_change)[2], 1, ifelse(coxData$abs_rltl_change <= quantile(coxData$abs_rltl_change)[3], 2, ifelse(coxData$abs_rltl_change<= quantile(coxData$abs_rltl_change)[4], 3, 4)))
+
+
+coxData$average_resid_3G<-ntile(coxData$average_resid,3)
+coxData$rltl_change_3G<-ntile(coxData$rltl_change,3)
+coxData$abs_rltl_change_3G<-ntile(coxData$abs_rltl_change,3)
+
+
+write.csv(coxData, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/cox_data.csv")
 ```
