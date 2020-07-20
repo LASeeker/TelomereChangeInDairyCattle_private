@@ -1,0 +1,151 @@
+---
+title: "create input data"
+author: "Luise A. Seeker"
+date: "19/07/2020"
+output: html_document
+---
+### Load libraries
+
+```{r}
+
+library(dplyr)
+```
+
+### read in data
+
+```{r, echo=FALSE}
+data<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/CattleLongTelomereData.csv")
+
+data$recoded_id <- as.factor(data$recoded_id)
+
+names(data)
+
+colnames(data)[19]<-"abs_diff_rltl_res"
+
+names(data)
+```
+
+
+
+### Add sample year to data
+```{r, echo = FALSE}
+data$sample_year<-format(as.Date(data$sample_date, format="%d/%m/%Y"),"%Y")
+
+names(data)
+```
+
+## Add lifelong RLTL dynamics measurements
+
+### Add average residual RLTL 
+
+```{r, echo = FALSE}
+
+ET <- data.frame(recoded_id=sort(unique(data$recoded_id)))
+
+ET$average_resid<-tapply(data$residual_rltl_t, data$recoded_id, mean)
+nrow(ET)
+
+data<-merge(data, ET, by="recoded_id", all=TRUE)
+#names(data)
+nrow(data)
+names(data)
+
+
+```
+
+### Add mean RLTL change
+
+```{r}
+# This only works for data that is not NULL
+redData<-subset(data, data$residual_rltl_tminus1 != "NULL")
+
+eT <- data.frame(recoded_id=sort(unique(redData$recoded_id)))
+
+eT$rltl_change<-tapply(as.numeric(paste(redData$diff_rltl_res)), redData$recoded_id, mean)
+nrow(eT)
+
+
+data<-merge(data, eT, by="recoded_id", all=TRUE)
+#names(data)
+nrow(data)
+names(data)
+
+```
+
+
+### Add mean absolute RLTL change
+
+```{r}
+# Add mean absolute RLTL change:
+
+
+ETA <- data.frame(recoded_id = sort(unique(redData$recoded_id)))
+
+abs_diff<-as.numeric(paste(redData$abs_diff_rltl_res))
+
+ETA$abs_rltl_change <- tapply(abs_diff, redData$recoded_id, mean)
+
+nrow(ETA)
+
+
+data<-merge(data, ET, by="recoded_id", all=TRUE)
+#names(data)
+nrow(data)
+names(data)
+
+```
+
+
+
+```{r}
+#add column with factor levels for age ("young" for <= 1 year, "older" for > 1 year)
+
+data$AgeGroup<-ifelse(data$age_d<365, "young", "older")
+
+```
+
+### Calculate sample number per animal
+
+```{r}
+#calculate number of samples per animal
+nuOfSamp<-data.frame(recoded_id=sort(data$recoded_id))
+
+Sdf<- nuOfSamp %>% 
+  group_by(recoded_id) %>%
+  summarise(no_rows = length(recoded_id))
+
+
+Sdf<-as.data.frame(Sdf)
+
+
+
+names(Sdf)<-c("recoded_id", "SamplesPerAnimal")
+Sdf$Animal_No<-c(1:305)
+
+summary(Sdf$SamplesPerAnimal)
+
+data<-merge(data, Sdf, by="recoded_id", all=TRUE)
+
+nrow(data)
+names(data)
+
+```
+
+
+```{r}
+colnames(data)[30]<-"average_resid"
+
+names(data)
+
+data<-data[, !(colnames(data) %in% c("average_resid.y" ))]
+```
+
+
+
+```{r}
+
+
+write.csv(data, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/LongTelomereDataCattle.csv" )
+
+
+```

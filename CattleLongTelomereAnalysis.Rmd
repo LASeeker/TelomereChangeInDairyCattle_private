@@ -1,0 +1,1778 @@
+---
+title: "Life-long telomere attrition predicts health and lifespan in a large mammal"
+author: "Luise A. Seeker"
+date: "Thursday, April 20, 2017"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+    toc_depth: 4
+    theme: united
+---
+
+# Information
+
+## Short running title 
+
+Telomere length attrition predicts health span
+
+## Authors & Affiliations:
+Luise A. Seeker1@, Sarah L. Underwood2, Rachael V. Wilbourn2, Jennifer Fairlie2, Hannah Froy2@@, Rebecca Holland2, Joanna J. Ilska1, 3, Androniki Psifidi3,4, Ainsley Bagnall5, Bruce Whitelaw3, Mike Coffey1, Georgios Banos1, 3 & Daniel H. Nussey2
+
+1 Animal & Veterinary Sciences, SRUC, Roslin Institute Building, Easter Bush, Midlothian, UK
+2 Institute of Evolutionary Biology, School of Biological Sciences, University of Edinburgh, UK
+3 The Roslin Institute and Royal (Dick) School of Veterinary Studies, University of Edinburgh, Easter Bush, Midlothian, UK
+4 Royal Veterinary College, University of London, Hatfield, UK
+5 SRUC Crichton Royal Farm, Glencaple Road, Dumfries, UK
+
+## Corresponding author:
+
+Luise A. Seeker
+MRC Centre for Regenerative Medicine, The University of Edinburgh, Edinburgh BioQuarter, 5 Little France Drive, Edinburgh EH16 4UU
+Luise.seeker[AT]ed.ac.uk 
+07591133397
+Present author addresses:
+@ MRC Centre for Regenerative Medicine, University of Edinburgh, Edinburgh, UK
+@@ Centre for Biodiversity Dynamics, NTNU Norwegian University of Science and Technology, Trondheim, Norway
+ 
+# Abstract
+Telomere length measured in blood cells is predictive of subsequent adult health and survival across a range of vertebrate species. However, we currently do not know whether such associations result from among-individual differences in telomere length determined genetically or by environmental factors early in life, or from differences in the rate of telomere attrition over the course of life. Here, we measured relative leukocyte telomere length (RLTL) multiple times across the entire lifespan of dairy cattle in a research population that is closely monitored for health and milk production and where individuals are only culled in response to health issues and less due to poor milk production than on purely commercial farms. Our results clearly show that the average amount of telomere attrition over an individual’s life, not their average or early life telomere length predicted when an individual was culled. Within-individual telomere length attrition could reflect environmental or physiological insults which may accumulate to predict individual health-span. We also show that animals with more telomere attrition in their first year of life were culled at a younger age, indicating that early life stressors may have a prolonged effect on adult life. 
+
+
+# Keywords: 
+Telomeres, telomere length, longitudinal, lifespan, health-span, qPCR
+
+
+# Introduction
+Telomeres are repetitive DNA sequences that cap the ends of eukaryote linear chromosomes (Blackburn & Gall, 1978; De Lange, 2005). They shorten with the number of cell divisions in vitro as well as in response to oxidative stress and critically short telomeres trigger a DNA damage response that leads to replicative senescence or apoptosis (Harley, Futcher, & Greider, 1990; Olovnikov, 1973; Watson, 1972). In the last decade or so, measures of average telomere length (TL) taken from blood samples have emerged as an exciting biomarker of health across disciplines including biomedicine, epidemiology, ecology and evolutionary biology (Aviv & Shay, 2018; Harrington & Pucci, 2018; Wilbourn et al., 2018). Considerable among- and within-individual variation in TL has been observed, with a general pattern of rapid telomere attrition during early life and a plateau or slower decline thereafter (Aubert & Lansdorp, 2008; Baerlocher, Rice, Vulto, & Lansdorp, 2007). Both genetic and environmental factors, particularly those associated with physiological stress, predict TL in humans and other vertebrates (Angelier, Costantini, Blévin, & Chastel, 2017; Muhammad Asghar et al., 2015; Cherkas et al., 2006; Dugdale, Richardson, & Richardson, 2018; Epel et al., 2004). TL has also been repeatedly associated with health outcomes and subsequent survival in a variety of species, particularly humans and birds (Boonekamp, Simons, Hemerik, & Verhulst, 2013; Wilbourn et al., 2018) and also experimentally elongated TL in mice were associated with a survival advantage (Muñoz-lorente, Cano-martin, & Blasco, 2019). However, a major outstanding question remains to what degree associations between TL and health arise from constitutive differences in TL among individuals set by genes or early life conditions, or from the pattern of within-individual change in TL across individuals’ lives.
+Estimates of the individual consistency of TL over time in both human and avian literature vary considerably among studies. Some studies report very high correlations within individuals across follow-up measurements (r > 0.8; (Benetos et al., 2013; Boonekamp, Mulder, Salomons, Dijkstra, & Verhulst, 2014)) and high heritability of TL (>0.7; (Atema et al., 2015; Broer et al., 2013)), and have shown in humans that the rank order in TL among individuals remains relatively consistent during adult life (Benetos et al., 2013). This implies most of the variation in blood cell TL occurs at the among-individual level and is predominantly determined by genetics and early-life environment (Atema et al., 2015; Benetos et al., 2013). In stark contrast to this, a growing body of literature studying both humans and non-human vertebrates reports much lower individual repeatability and heritability (Dugdale & Richardson, 2018; Voillemot et al., 2012). These studies demonstrate very high levels of within-individual variation in TL and show that changes in TL across consecutive measurements are highly dynamic (Fairlie et al., 2015; Farzaneh-Far et al., 2010). Although on average TL attrition over time tends to be the norm, a growing number of studies have found that a substantial proportion of individuals show telomere elongation over time and it is now clear this cannot be ascribed solely to measurement error (Bateson & Nettle, 2016; Spurgin et al., 2018). A recent cross-sectional study has shown that amongst different avian and mammal species, those with a fast telomere attrition rate have a shorter life span but without investigating if telomere attrition rate within individuals is predictive of their life span within the population as well (Whittemore, Vera, Martínez-nevado, Sanpera, & Blasco, 2019). To date, few studies have directly compared the power of an individual’s average or early life TL versus the pattern of within-individual change in TL to explain variation in measured associated with health and fitness. In Seychelle warblers and Alpine swifts both telomere length and telomere attrition rate were associated with survival (Barrett, Burke, Hammers, Komdeur, & Richardson, 2013; Bize, Criscuolo, Metcalfe, Nasir, & Monaghan, 2009) while in jackdaw nestlings telomere length was not predictive of lifespan but early life telomere attrition- accelerated by early life stress- was (Boonekamp, Mulder, Salomons, Dijkstra, & Verhulst, 2014). Contrary, in a study on elderly humans, there was an association between telomere length and longevity, but not between telomere attrition and life span (Yuan, Kronström, Hellenius, Cederholm, & Xu, 2018). To our knowledge no studies so far has investigated the relationship between telomere attrition and life span with data spanning the entire typical lifespan of the studied individuals. Here, we use an exceptionally detailed longitudinal study of dairy cattle to show that a life-long tendency for greater telomere attrition, rather than average TL, predicts productive lifespan, a metric closely linked to long-term health.  
+
+We used samples and data collected as part of the long-term study of Holstein Friesian dairy cattle kept at the Crichton Royal Research Farm in Dumfries, Scotland (Veerkamp, Simm, & Oldham, 1994). This herd, consisting of around 200 milking cows plus their calves and replacement heifers, has been regularly monitored since 1973 for a broad range of measurements, such as body weight, feed intake, signs of disease (health events), milk yield, productive lifespan and reasons for culling (Veerkamp et al., 1994). The cows are separated into two distinct genetic groups (a group that has been strongly selected for high milk fat and protein yield, and a control group) and are randomly allocated to two different diets (a high forage, low energy diet vs. a low forage, high energy diet group) (Veerkamp et al., 1994). Blood samples are routinely collected from members of the herd, initially within 15 days after birth and then approximately annually thereafter. Productive lifespan, which is the age of an individual at culling, is recorded for every animal together with a reason for culling. In this and other commercial livestock herds, culling is a response to diseases such as reproductive problems, lameness and mastitis. Although productive lifespan in livestock is clearly not a comparable measure to longevity in study of humans or wild vertebrates, we argue that because age at culling is tightly linked to health, it can be considered as a proxy for health-span, over and above its obvious importance as a metric of agricultural productivity. We have previously reported for this herd that TL is moderately repeatable and heritable, but that individual slopes relating TL to age vary considerably among individuals (Seeker et al., 2018; Seeker et al., 2018). We have also reported that TL at the age of one year predicts productive lifespan in this population of dairy cattle (Seeker et al., 2018). Here, we test the relationships between lifetime average TL as well as lifetime change in TL with productive lifespan. 
+ 
+ 
+# Materials and Methods
+
+## Animal population and data collection
+
+At the Crichton Royal Farm, 200 milking cows plus their calves and replacement heifers are kept at any time. One half of the milking cows belong to a genetic line that has been selected for high milk protein and fat yield (S), while the other half is deliberately maintained on a UK average productivity level (C).  Calves and heifers of both genetic lines are kept together. After first calving all cows are randomly allocated to a high forage (HF) or low forage (LF) diet. The LF diet is energy richer than the HF diet and whilst the LF cows are housed continuously, the HF cows graze over the summer months. All cows are milked three times daily and milk yield is recorded. In the present study, these measurements were used to calculate an average milk production in kg per cow including all started lactations and it is referred to this below as “average lifetime milk production” (Figure S1). Every day cows leave the milking parlour over a pressure plate which detects signs of lameness. Behaviour and health events are documented after visual detection by farm workers (Figure S2). At the end of the animal’s life its productive lifespan and a reason for culling are recorded. Productive lifespan is the time from birth to culling in days and is a proxy for the health span of the animal, because all animals that remain healthy enough to generate profit for the farmer remain in the herd. The most frequent reasons for culling were reproductive problems, mastitis, lameness and injuries caused by accidents (Figure S3). Routine blood sampling takes place initially shortly after birth and then annually in spring. Because of this sampling routine and because calves are being born all year round, age at sampling and sampling intervals vary for adult animals (Figure S1). Further information about the animal population can be found in Supplementary File 2.
+
+## DNA extraction and qPCR
+
+DNA from whole blood samples was extracted with the DNeasy Blood and Tissue spin column kit (QIAGEN) and telomere length was measured by qPCR as previously described (Seeker et al., 2016; Seeker et al., 2018; Seeker et al., 2018; Seeker, Holland, Psifidi, Banos, & Nussey, 2015). The repeatability of the assay (see Supplementary File 2 for how repeatability was calculated) was 80% and therefore delivers robust results for further interpretation (Nettle, Seeker, Nussey, Froy, & Bateson, 2019). A full description of our DNA extraction and qPCR protocols including quality control steps can also be found in Supplementary File 2. 
+
+## Statistical analysis
+We have shown before that our RLTL data are significantly affected by qPCR plate and qPCR row (Seeker et al., 2016; Seeker et al., 2018). To account for those known sources of measurement error, we used the residuals of a linear model that corrected all RLTL measurements for qPCR plate and row, by fitting plate and row as fixed factors in the model. These residual RLTL measures were used in all subsequent calculations and models of telomere dynamics. RLTL change was calculated as the difference between two subsequent adjusted RLTL measurements within individuals (RLTL change = RLTLt - RLTLt-1). To investigate which factors affect the direction and amount of RLTL change, a linear mixed model was fitted with RLTL change as response variable and animal identity as random effect. To capture the experimental design, feed group and genetic group were added as fixed effects to all models. Also, the time difference between consecutive samplings in days was fitted as a covariate, becasue sampling intervals varied within and between animals. [The following additional factors were tested for their relationship with RLTL change](#### Initial full model of RLTL change): birth year of the animal (fixed effect), year of sampling (fixed effect), age at sampling (at time t), and the occurrence of a health event within two weeks before or after sampling (at time t).  
+
+Becasue of our study design, the first two sample years only included RLTL change in young animals which has previously been shown to follow a different pattern. To exclude that a year effect was driven by the difference in juvenile and adult RLTL dynamics, the full model was repeated while [excluding the first two sample years](#### Full model of RLTL change excluding first two years).
+
+Birth year and the occurrence of a heath event were not statistically significant (p>0.05) and therefore eliminated from the [model](#### Reduced model of RLTL change). In the reduced model, age was first fitted as a covariate (age in years) than as a [fixed effect](#### Reduced model of RLTL change with age as two level factor) (factor with two levels: younger vs. older than 1 year) and model fit was compared using AIC values. Because we wanted to investigate if milk productivity was associated with RLTL change, the best-fitting model of RLTL change was repeated for 918 change measurements of 253 animals for which milk productivity measurements were available and [average lifetime milk production re-scaled by dividing it by 1000 was fitted as additional covariate](#### Model of telomere change including milk productivity). 
+
+To investigate the association between RLTL change and productive lifespan we first focussed on RLTL change within the first year of life by only considering two RLTL measurements per animal: The first was taken shortly after birth and the second at the approximate age of one year. The change between those measurements was tested as an explanatory variable in a Cox proportional hazard model of productive lifespan. 
+
+Our data shows similar to other longitudinal studies with more than two measurements no constant attrition, maintenance or elongation, but more complex dynamics with short term changes in both directions. Example individual RLTL dynamics are shown for all cows with at least seven RLTL measurements in our dataset in figure S4. The complexity of telomere dynamics (which cannot be explained by measurement error alone) means that it is impossible to compare lifelong telomere dynamics by simply comparing slopes. To still be able to test how life-long telomere dynamics are associated with productive lifespan, we calculated three average metrics of RLTL dynamics over every individual’s lifetime: Firstly, the average of all their RLTL measures (“mean RLTL”) which investigates if animals with on average longer RLTL have a survival advantage, secondly, the average of all their RLTL change measures (“mean RLTL change”) and thirdly, the average of all their absolute RLTL change measures (“mean absolute RLTL change”). While mean RLTL change captures the direction and magnitude of RLTL changes, mean absolute RLTL change describes just the magnitude of change without considering its direction because we were interested to investigate if more change in either direction may be correlated with adverse effects. Figure S5 visualises the reasoning behind calculating these three measures of lifetime telomere length dynamics which are not surprisingly moderately correlated with one another (r ranged from -0.53 to 0.30, Figure S6). We used Cox proportional hazard models of productive lifespan that also included mean milk production as covariate and included mean RLTL, mean RLTL change and mean absolute RLTL change as explanatory variables first separately and then together to test their association with productive lifespan first separately, then while accounting for the effect of the other two measures. We have reported before that on average RLTL shortens in this population of dairy cattle within the first year of life while remaining relatively stable thereafter at the population level (Seeker et al., 2018; Seeker, et al., 2018). We were concerned that the initial RLTL attrition may contribute proportionally more to overall RLTL shortening in short-lived animals with less follow up samples which may explain a correlation of more telomere attrition with a shorter productive lifespan. To ensure the relationship was not entirely driven by this correlation, we tested all models again while excluding all measurements that were taken shortly after birth and then also while excluding all animals with less than three RLTL measurements. Lastly, we tested if the previously reported effect of RLTL at the age of one year on productive lifespan (Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Salvo-Chirnside, et al., 2018) remained statistically significant when tested in a Cox proportional hazard model together with milk productivity and mean RLTL change. 
+All statistical analyses were performed in R studio with R 3.1.3. (R Core Team, 2014). Mixed-effects models were implemented using the ‘lme4’ library (Bates, Mächler, Bolker, & Walker, 2015), while Cox proportional hazard models were implemented using the library survival (Therneau, 2015) and figures were generated with the library ‘ggplot2’ (Wickham, 2009).
+
+
+### Load libraries
+
+```{r, echo = FALSE}
+
+library(ggplot2)
+library(nlme)
+library(lme4)
+library(lmerTest)
+library(grid)
+library(gridExtra)
+library(mgcv) # for GAM
+library(data.table)
+library(stringr)
+
+library(magrittr)
+library(ggthemes)
+library(plyr)
+library(dplyr)
+library(survival)
+library(survminer)
+library(ggsci)
+#library(AICcmodavg)
+```
+
+### Build colour palettes
+
+```{r, echo = FALSE}
+# Make colour palette
+mypal <- pal_npg("nrc", alpha = 0.7)(10)
+mypal2 <-pal_tron("legacy", alpha = 0.7)(7)
+mypal3<-pal_lancet("lanonc", alpha = 0.7)(9)
+mypal4<-pal_simpsons(palette = c("springfield"), alpha = 0.7)(16)
+
+mycoloursP<- c(mypal, mypal2, mypal3, mypal4)
+
+```
+
+
+### Reasd in data
+
+```{r}
+
+data<- read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/LongTelomereDataCattle.csv")
+
+
+# create data which only lists each animal ID once (needed for some counts/ histograms below)
+uData<- data[!duplicated(data$recoded_id),]
+
+# create data that excludes all first measurements without t-1 time point. This is used for investigations of change
+redData<-subset(data, data$residual_rltl_tminus1 != "NULL")
+```
+
+
+
+# Results
+
+
+## calculate sample number per animal
+
+```{r}
+count<- nrow(data)
+unique_count<- length(unique(data$recoded_id))
+sample_year_summ<-summary(as.factor(data$sample_year))
+
+print(paste("There are ", count, " relative leukocyte telomere length (RLTL) measurements of ", unique_count, " animals included in the study.", sep =""))
+```
+
+## Distibution of sample years 
+```{r}
+sample_year_summ
+```
+
+
+We used blood samples collected between 2008 and 2014 to measure relative leukocyte telomere length (RLTL) by monoplex qPCR in 1,325 samples from 305 individuals. 
+
+
+
+
+## Plot sample number per animal
+```{r}
+
+hist1<-ggplot(uData, aes(x = uData$SamplesPerAnimal)) + 
+	geom_histogram(colour= "black", fill = mycoloursP[7], binwidth = 1) + xlab("Number of samples per animal") +  
+  geom_vline(xintercept= mean(as.numeric(paste(uData$SamplesPerAnimal))), colour="red")+ 
+  annotate("text", x = 0.7, y = 100, label = "(A)", fontface =2, size = 10) + theme_classic(20)+
+  scale_x_continuous(breaks=c(1:8))
+
+hist1
+
+```
+
+
+
+On average 4.3 (range: 2-8) telomere measurements were made of each individual, including the first measurement within 15 days of birth and a variable number of subsequent measures (Figure S7 A). 
+
+RLTL measures, adjusted for qPCR plate and row (see Methods), were approximately normally distributed (Figure S7 B). 
+
+
+
+## Plot distribution of telomere residuals
+```{r}
+hist2<-ggplot(data, aes(x = data$residual_rltl_t)) + 
+	geom_histogram(colour= "black", fill = mycoloursP[12]) + xlab("Adjusted RLTL") + 
+  geom_vline(xintercept= mean(as.numeric(paste(data$residual_rltl_t))), colour="red") + 
+  annotate("text", x = -0.45, y = 120, label = "(B)", fontface =2, size = 10)+
+  theme_classic(20)+
+	stat_function(
+		fun = function(x, mean, sd, n){
+			 n/25* dnorm(x = x, mean = mean, sd = sd)
+		}, 
+		args = with(data, c(mean = mean(data$residual_rltl_t), sd = sd(data$residual_rltl_t), n
+= length(data$residual_rltl_t)))
+	) 
+
+hist2
+
+```
+
+
+```{r}
+# statistical tests for normal distribution of RTL measurements
+shapiro.test(data$residual_rltl_t)
+ks.test(data$residual_rltl_t, pnorm)
+qqnorm(data$residual_rltl_t)
+
+```
+
+
+From these longitudinal data we calculated 1,020 measures of change in adjusted RLTL across subsequent measurements of individual animals. RLTL change also showed approximately a normal distribution with a mean statistically significantly smaller than zero (Figure S7 C; t = -5.844, df = 1019, p-value <0.001) indicating that telomere shortening overall predominated. 
+
+## Plot difference between RLTL res at time t and time t-1
+
+```{r}
+
+diff<- as.numeric(paste(redData$diff_rltl_res))
+
+hist3<-ggplot(redData, aes(x = as.numeric(paste(redData$diff_rltl_res)))) + 
+	geom_histogram(colour= "black", fill = mycoloursP[13]) + xlab("Adjusted RLTL change") +  
+  geom_vline(xintercept= mean(as.numeric(paste(redData$diff_rltl_res))), colour="red") +
+  annotate("text", x = -0.75, y = 95, label = "(C)", fontface =2, size= 10)+
+  theme_classic(20)+
+	stat_function(
+		fun = function(x, mean, sd, n){
+			 n/23* dnorm(x = x, mean = mean, sd = sd)
+		}, 
+		args = with(redData, c(mean = mean(as.numeric(paste(redData$diff_rltl_res))), sd = sd(as.numeric(paste(redData$diff_rltl_res))), n
+= length(as.numeric(paste(redData$diff_rltl_res))))))
+
+hist3
+ 
+```
+
+
+```{r}
+
+
+# statistical tests for normal distribution of difference in RTL residuals
+shapiro.test(diff)
+ks.test(diff, pnorm)
+qqnorm(diff)
+```
+
+
+```{r}
+# test if mean RLTL change is significantly different from zero:
+
+t.test(as.numeric(paste(redData$diff_rltl_res)), mu=0, alternative="less", conf.level=0.99)
+
+```
+
+
+
+## Shortening and elongating:
+
+```{r}
+shortening<-subset(redData, as.numeric(paste(redData$diff_rltl_res)) < 0)
+elongating<-subset(redData, as.numeric(paste(redData$diff_rltl_res))>0)
+
+percent_shortening<-nrow(shortening)/nrow(redData)*100
+percent_shortening
+
+percent_elongating<-nrow(elongating)/nrow(redData)*100
+percent_elongating
+```
+
+Animals varied in the amount and direction of RLTL change across consecutive measurements, with a fairly even proportion of individuals increasing (43.5%) and decreasing (56.5%) in RLTL over time. 
+
+
+## Modelling
+
+### Factors affecting telomere change
+We next ran a series of models to test whether known individual, genetic and environmental variables could explain variation in RLTL change. Only sample year was significant in these models; age in years, genetic group, feed group, birth year, the time difference between samplings in days, and the occurrence of a health event within two weeks of sampling were not significant (Table S1). However, when age was fitted a factor with two levels for animals younger or oler than 1 year, it became clear that younger anumals show significantly more telomere length attrition (Tables S2 and S3)
+
+#### Initial full model of RLTL change
+
+```{r}
+
+init_mod<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+ as.factor(redData$birth_year)+ as.factor(redData$sample_year) +  as.numeric(paste(redData$sample_interval))+ redData$health_event_2week +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(init_mod)
+anova(init_mod)
+
+AIC(init_mod)
+
+# There is a warning that this model is singular which is due to the random effect variance structure. It means that the variance due to the animal ID is not significantly different from 0. Although this may be a problem for some models, I think in this case it is not. It simply means that there is no variation between animals in the RLTL change and that is to be expected here, because the variance within animals is much larger than the variance between animals. 
+
+# Sample year is statistically significant, but it might only be signifgicant due to the design of our study. Becasue we wanted to have repeat measurements for all animals with the first measurement taken with the first 15 days of life, sampling in the first year only included calves which have been shown before to have longer telomeres than adults and to shorten them in their first year of life. So is the year effect simply driven by that? If so, it should vanish after excluding samples taken within the two years
+```
+
+#### Full model of RLTL change excluding first two years 
+```{r}
+summary(as.factor(data$sample_year))
+
+test_dat<-subset(data, data$sample_year != c(2008, 2009))
+long_dat<-subset(test_dat, test_dat$diff_rltl_res != "NULL")
+
+late_mod<-lmer(as.numeric(paste(long_dat$diff_rltl_res))~ long_dat$age_y + long_dat$feed_group + long_dat$genetic_group + as.factor(long_dat$birth_year)+ as.factor(long_dat$sample_year) +  as.numeric(paste(long_dat$sample_interval))+ long_dat$health_event_2week +(1|long_dat$recoded_id), na.action=na.exclude)
+
+
+
+
+summary(late_mod)
+anova(late_mod)
+
+AIC(late_mod)
+
+# sample year remains statistically significant. 
+
+```
+
+#### Reduced model of RLTL change
+
+```{r}
+
+red_mod<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+ as.factor(redData$sample_year) +  as.numeric(paste(redData$sample_interval)) + (1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(red_mod)
+anova(red_mod)
+
+AIC(red_mod) 
+```
+
+#### Reduced model of RLTL change with age as two level factor
+
+```{r}
+
+red_mod_fac<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$AgeGroup + redData$feed_group + redData$genetic_group+ as.factor(redData$sample_year) +  as.numeric(paste(redData$sample_interval))+(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(red_mod_fac)
+anova(red_mod_fac)
+
+AIC(red_mod_fac)
+
+```
+
+```{r, echo = FALSE}
+
+#save tables:
+tableS1<-as.data.frame(round(coef(summary(init_mod)),3))
+tableS2<-as.data.frame(anova(init_mod))
+
+write.csv(tableS1, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS1.csv")
+
+write.csv(tableS2, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS2.csv")
+
+#save tables:
+tableS3<-as.data.frame(round(coef(summary(late_mod)),3))
+tableS4<-as.data.frame(anova(late_mod))
+
+write.csv(tableS3, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS3.csv")
+
+write.csv(tableS4, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS4.csv")
+
+#save tables:
+tableS5<-as.data.frame(round(coef(summary(red_mod)),3))
+tableS6<-as.data.frame(anova(red_mod))
+
+write.csv(tableS5, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS5.csv")
+
+write.csv(tableS6, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS6.csv")
+
+
+#save tables:
+tableS7<-as.data.frame(round(coef(summary(red_mod_fac)),3))
+tableS8<-as.data.frame(anova(red_mod_fac))
+
+write.csv(tableS7, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS7.csv")
+
+write.csv(tableS8, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/tableS8.csv")
+
+```
+
+### Effect of milk productivity on RLTL change
+
+Average lifetime milk productivity was not statistically associated with RLTL change, when tested in a subset of animals (253 animals with 918 RLTL change measurements) that had milk productivity measurements available (Table S2). 
+
+
+#### Model of telomere change including milk productivity
+```{r}
+
+#t test with average productivity in the model for animals that have productivity measurements:
+
+PData<-subset(redData, redData$amp_305_lactation != "NULL")
+nrow(PData)
+length(unique(PData$recoded_id))
+
+rescaled_prod<-as.numeric(paste(PData$amp_305_lactation))/1000
+# milk productivity measures are on a completely differenc scale and are therefore re-scaled by dividing them by 1000
+
+prod_mod<-lmer(as.numeric(paste(PData$diff_rltl_res))~ PData$age_y + PData$feed_group + PData$genetic_group+  as.factor(PData$sample_year) + as.numeric(paste(PData$sample_interval)) + rescaled_prod + (1|PData$recoded_id), na.action=na.exclude)
+
+summary(prod_mod)
+anova(prod_mod)
+```
+
+
+```{r, echo = FALSE}
+
+TableS9<-as.data.frame(round(coef(summary(prod_mod)),3))
+write.csv(TableS9, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/TableS9")
+
+
+TableS10<-as.data.frame(anova(prod_mod))
+write.csv(TableS10, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/TableS10")
+```
+
+
+We have previously shown that, on average across this population, RLTL declined over the first year of life but showed no systematic change with age thereafter (Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Salvo-Chirnside, et al., 2018; Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Bagnall, et al., 2018). Consistent with this, we found that average RLTL change across consecutive measurements was only significantly negative (indicating a tendency for attrition over time) when the first measurement was made close to birth and the follow up measurement at the age of around 1 year (Figure 1A, estimate= -0.115, SE= 0.01, t= -11.512, p<0.001; Table S3).
+
+### Correlation between subsquent measurements
+```{r, fig.width= 8, fig.height= 4}
+cor.test(redData$residual_rltl_t,as.numeric(paste(redData$residual_rltl_tminus1)))
+
+SubsPlot<-ggplot(redData, aes(x=as.numeric(paste(residual_rltl_tminus1)), y=redData$residual_rltl_t))+geom_point()+xlab("RLTL at time t-1")+ylab("RLTL at time t")+theme_classic(20)+geom_abline(intercept=0, slope=1, colour="red")+ stat_smooth(method=lm, formula=y~x)+
+  annotate("text", x = -0.4, y = 0.5, label = "(B)", fontface =2, size = 12)
+
+
+agePlot<- ggplot(redData, aes(x=as.factor(redData$age_y), y=as.numeric(paste(redData$diff_rltl_res))))+geom_jitter()+theme_classic(20)+ xlab("Age in years")+ ylab("RLTL change")+ geom_boxplot()+
+  annotate("text", x = 1, y = 0.5, label = "(A)", fontface =2, size = 12)
+
+grid.arrange(agePlot, SubsPlot, ncol=2)
+```
+
+
+
+Consecutive RLTL measurements made on the same individual were overall moderately positively and significantly correlated (r=0.38, p<0.001; Figure 1B), supporting our previously reported moderate and significant individual repeatability of RLTL (Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Bagnall, et al., 2018). 
+We next tested whether measured RLTL change predicted the productive lifespan of cattle. Of all dead cows (N=244) the vast majority (N=241) had survived to their first lactation, but there was considerable variation in productive lifespan beyond this point (Figure S7 D). We used a Cox proportional hazard model to test whether early life RLTL change between two samples, one taken shortly after birth and the next at an approximate age of one year, predicted productive lifespan and found that greater early life RLTL attrition was associated with a shorter productive lifespan (N= 291, coefficient= -1.141, SE= 0.391, p= 0.004, Figure 2, Table S4). 
+When each measure of lifetime RLTL dynamics was tested in a separate cox proportional hazard model of productive lifespan, mean RLTL did not significantly predict productive lifespan (coefficient= 0.341, SE= 0.591, p=0.564, Figure 2B , Table S4), but both mean RLTL change (coefficient= -5.209, SE= 0.845, p<0.001; Figure 2D, Table S4) and mean absolute RLTL change (coefficient= 2.939, SE= 0.970, p=0.002; Figure 2C, Table S4) were significantly associated with productive lifespan. When all three measures of lifetime RLTL dynamics were included in the same model only mean RLTL change remained significant (coefficient = -4.758, SE= 1.018, p<0.001; Table S4). This implies that the relationship between productive lifespan and mean absolute RLTL change was largely due to covariance with mean RLTL change. Thus, individuals that experienced greater telomere attrition over their lifetimes had a shorter productive lifespan and direction of RLTL change (rather than simply absolute magnitude) was an important aspect of this relationship. To visualise the relationship between RLTL change measurements and productive lifespan using Kaplan-Meier plots (Figure 2), continuous RLTL measures were transformed to a discrete scale by grouping them into tertiles (Figure S8). Cox proportional hazard models based on these tertile groupings of RLTL measures showed similar results to those reported above (Figure 2). 
+The relationship between mean RLTL change and productive lifespan was robust to the inclusion of milk production (a physiological stressor, which is positively associated with productive lifespan as cows with a low milk yield are more likely to be culled at a younger age) in the model (Table S5). If RLTL declines most within the first year of life (as Figure 1A indicates), the association between change in RLTL and productive lifespan may be driven by the fact that this initial decline contributes relatively more to estimates of mean RLTL change in shorter-lived individuals than in animals that have more follow up samples with more moderate change measures available. We therefore repeated the analysis excluding the early life RLTL measurements and found that mean RLTL change still predicted productive lifespan (N=253, coefficient= -5.056, SE= 1.315, p<0.001, Table S6). The relationship between mean RLTL change and productive lifespan also remained statistically significant, when animals with less than 3 samples were excluded from the analysis (N= 213, coefficient= -3.47, SE= 1.34, Wald test = 6.7 on 1 df, p= 0.01) and when RLTL at 1 year of age (which we previously found to predict productive lifespan (Seeker, Ilska, Psifidi, Wilbourn, Underwood, Fairlie, Holland, Froy, Salvo-Chirnside, et al., 2018)) was included in the models (Table S7). 
+
+
+
+
+
+
+
+
+
+
+
+spaghetti plot for animals with more than seven RLTL measurements for supplementary figure S4:
+
+```{r}
+spaghettiData<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/RC_SpaghettiData.csv")
+
+
+ggplot(data = spaghettiData, aes(x = age_y, y = residual_rltl_t, group = recoded_id))+geom_point()+ geom_line()+facet_grid(.~recoded_id)+ 
+  xlab("Age in years") + ylab("RLTL residuals")
+
+```
+
+
+```{r}
+ggplot(data = data, aes(x = sample_year, y = residual_rltl_t, group = recoded_id, colour= as.factor(data$recoded_id)))+geom_point()+ geom_line()+ 
+  xlab("Age in years") + ylab("RLTL residuals") + 
+  theme(legend.position = "none")
+
+
+
+
+```
+
+```{r}
+ggplot(data = data, aes(x = age_y , y = residual_rltl_t, group = recoded_id)) + geom_point(color= "white")+ geom_line(color= "white") + xlab("Age in years") + ylab("RLTL residuals") + theme(legend.position = "none") + geom_smooth(method = "lm", se = FALSE) + theme_classic()
+
+
+
+
+```
+
+
+
+
+
+############
+
+
+```{r}
+# # average_resid rltl_change  abs_rltl_change MeanChangeRate MeanChangeRateAbs
+
+deadD<-subset(data, data$herd_life != "NULL")
+redDeadD<-subset(redData, redData$herd_life != "NULL")
+uDeadData<-redDeadD[!duplicated(redDeadD$recoded_id),]
+
+#1)
+x<-15
+
+AverRes<-uDeadData$average_resid
+chF<-uDeadData$rltl_change
+
+df1<-data.frame(AverRes, chF)
+
+
+cor.test(AverRes, chF)
+
+CorP1 <- ggplot(df1 , aes(x= AverRes, y=chF)) + geom_point(size= 2) +
+  labs(x= "Mean RLTL", y= "Mean RLTL change") + stat_smooth(method=lm, formula = y~x)+
+  theme_gray(x)
+CorP1
+
+```
+
+
+```{r}
+
+#2) 
+AchF<-uDeadData$abs_rltl_change
+
+df2<-data.frame(AverRes, AchF)
+
+
+cor.test(AverRes, AchF)
+
+CorP2 <- ggplot(df2 , aes(x= AverRes, y=AchF)) + geom_point(size= 2) +
+  labs(x= "Mean RLTL", y= "Mean absolute RLTL change") + stat_smooth(method=lm, formula = y~x)+
+  theme_gray(x)
+CorP2
+
+
+#5) 
+
+df5<-data.frame(chF, AchF)
+
+cor.test(chF, AchF)
+
+CorP5 <- ggplot(df5 , aes(x= chF, y=AchF)) + geom_point(size= 2) +
+  labs(x= "Mean RLTL change", y= "Mean absolute RLTL change") +
+  theme_gray(x)+ stat_smooth(method=lm, formula = y~x)+
+  geom_vline(xintercept=0, linetype="dotted") +
+  geom_abline(intercept=0, slope=-1, colour="red")+
+  geom_abline(intercept=0, slope=1, colour= "blue")
+CorP5
+
+
+#grid.arrange(CorP1, CorP2, CorP3, CorP4, CorP5, CorP6, CorP7, CorP8, CorP9, CorP10, ncol=3 ) other plots can be found in 20170914_ChangeAnalysis
+
+grid.arrange(CorP1, CorP2, CorP5, ncol=3 )
+
+
+
+
+
+
+```
+Mean rate of RLTL change and mean rate of absolute RLTL change correlate well with mean RLTL change and mean absolute RLTL change. THerefore, they do not seem to add much to the analysis. Only mean RLTL, mean RLTL change and mean absolute RLTL change are used. 
+
+
+Correlation between subsquent measurements
+```{r}
+cor.test(redData$residual_rltl_t,as.numeric(paste(redData$residual_rltl_tminus1)))
+
+SubsPlot<-ggplot(redData, aes(x=as.numeric(paste(residual_rltl_tminus1)), y=redData$residual_rltl_t))+geom_point()+xlab("RLTL at time t-1")+ylab("RLTL at time t")+theme_gray(20)+geom_abline(intercept=0, slope=1, colour="red")+ stat_smooth(method=lm, formula=y~x)
+
+SubsPlot
+
+```
+
+```{r}
+
+#Plot correlation between present and past change
+redRedData<-subset(data, data$change_at_t_1!= "NULL")
+nrow(redRedData)
+
+cor.test(as.numeric(paste(redRedData$diff_rltl_res)), as.numeric(paste(redRedData$change_at_t_1)))
+
+SubsPlot2<-ggplot(redRedData, aes(x=as.numeric(paste(redRedData$change_at_t_1)), y=as.numeric(paste(redRedData$diff_rltl_res))))+geom_point()+xlab("RLTL change at time t-1")+ylab("RLTL change at time t")+theme_gray(20)+geom_abline(intercept=0, slope=-1, colour="red")+ stat_smooth(method=lm, formula=y~x)
+
+SubsPlot2
+
+grid.arrange(SubsPlot, SubsPlot2, ncol=2)
+
+```
+
+
+```{r}
+#resRTLatTmin1<-as.numeric(paste(redData$residual_rltl_tminus1))
+```
+
+
+
+
+
+
+
+
+
+Productive lifespan
+
+```{r}
+variable<- as.numeric(paste(uDeadData$herd_life))
+#sqrt might improve normality test outcome slightly...
+
+meanHL<-mean(as.numeric(paste(uDeadData$herd_life)))
+
+
+ggplot(uDeadData, aes(x = as.numeric(paste(uDeadData$herd_life)))) + 
+	geom_histogram(colour= "black", fill = mycoloursP[4]) + xlab("Productive lifespan in days") +  
+  geom_vline(xintercept= mean(as.numeric(paste(uDeadData$herd_life))), colour="red") + theme_bw(20) +
+	stat_function(
+		fun = function(x, mean, sd, n){
+			 n*120 * dnorm(x = x, mean = mean, sd = sd)
+		}, 
+		args = with(uDeadData, c(mean = mean(as.numeric(paste(uDeadData$herd_life))), 
+		                         sd = sd(as.numeric(paste(uDeadData$herd_life))), 
+		                         n= length(as.numeric(paste(uDeadData$herd_life))))))
+
+
+
+# statistical tests for normal distribution of RTL measurements
+shapiro.test(variable)
+ks.test(variable, pnorm)
+qqnorm(variable)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+ Backwards elimination of all non-significant effects
+
+```{r}
+
+
+
+#Age in years as factor with reference year being 0 (Age at t-1)
+mod1f<-lmer(as.numeric(paste(redData$diff_rltl_res))~ as.factor(redData$age_y) + (1|redData$recoded_id), na.action=na.exclude)
+
+summary(mod1f)
+anova(mod1f)
+
+
+################
+################
+#Test
+
+#mod1f<-lmer(abs(as.numeric(paste(redData$diff_rltl_res)))~ 1 + (1|redData$recoded_id), na.action=na.exclude)
+
+#summary(mod1f)
+#anova(mod1f)
+
+
+0.0006458/(0.0006458+0.0111165)
+##############
+###############
+
+redData$R_age_y<-as.factor(redData$age_y)
+
+#lm without random effect to do likelihood ratio test
+
+modLM<-glm(as.numeric(paste(redData$diff_rltl_res))~ as.factor(redData$age_y))
+anova(mod1f, modLM)
+
+logLik(mod1f)
+logLik(modLM)
+
+#Age in years as factor with reference year being 1 (Age at t-1)
+contrasts(redData$R_age_y) <- contr.treatment(levels(redData$R_age_y), base=which(levels(redData$R_age_y) == '1'))
+
+mod1f<-lmer(as.numeric(paste(redData$diff_rltl_res))~ as.factor(redData$R_age_y)+ as.factor(redData$sample_year) + as.numeric(paste(redData$sample_interval)) + (1|redData$recoded_id), na.action=na.exclude)
+
+summary(mod1f)
+anova(mod1f)
+
+exclude2009<-subset(redData, redData$sample_year != "2009")
+
+mod1f<-lmer(as.numeric(paste(exclude2009$diff_rltl_res))~ as.factor(exclude2009$R_age_y)+ as.factor(exclude2009$sample_year) + as.numeric(paste(exclude2009$sample_interval)) + (1|exclude2009$recoded_id), na.action=na.exclude)
+
+summary(mod1f)
+anova(mod1f)
+
+df<-as.data.frame(round(coef(summary(mod1f)),3))
+#write.csv(df, "/Users/luiseseeker/Desktop/PNAS/S2_Table_AgeFactor.csv")
+
+#lsmeans(mod1f,pairwise~as.factor(redData$R_age_y), adjust="Bonferroni") 
+
+
+#Age in years as factor with reference year being 2 (Age at t-1)
+contrasts(redData$R_age_y) <- contr.treatment(levels(redData$R_age_y), base=which(levels(redData$R_age_y) == '2'))
+
+mod1f<-lmer(as.numeric(paste(redData$diff_rltl_res))~ as.factor(redData$R_age_y) + (1|redData$recoded_id), na.action=na.exclude)
+
+summary(mod1f)
+anova(mod1f)
+
+#Age in years as factor with reference year being 3 (Age at t-1)
+contrasts(redData$R_age_y) <- contr.treatment(levels(redData$R_age_y), base=which(levels(redData$R_age_y) == '3'))
+
+mod1f<-lmer(as.numeric(paste(redData$diff_rltl_res))~ as.factor(redData$R_age_y) + (1|redData$recoded_id), na.action=na.exclude)
+
+summary(mod1f)
+anova(mod1f)
+
+#Age in years as factor with reference year being 4 (Age at t-1)
+contrasts(redData$R_age_y) <- contr.treatment(levels(redData$R_age_y), base=which(levels(redData$R_age_y) == '4'))
+
+mod1f<-lmer(as.numeric(paste(redData$diff_rltl_res))~ as.factor(redData$R_age_y) + (1|redData$recoded_id), na.action=na.exclude)
+
+summary(mod1f)
+anova(mod1f)
+
+#Age in years as factor with reference year being 5 (Age at t-1)
+contrasts(redData$R_age_y) <- contr.treatment(levels(redData$R_age_y), base=which(levels(redData$R_age_y) == '5'))
+
+mod1f<-lmer(as.numeric(paste(redData$diff_rltl_res))~ as.factor(redData$R_age_y) + (1|redData$recoded_id), na.action=na.exclude)
+
+summary(mod1f)
+anova(mod1f)
+
+
+
+lm<-lm(as.numeric(paste(redData$diff_rltl_res))~as.factor(redData$age_y))
+summary(lm)
+anova(lm)
+
+
+nrow(subset(redData, redData$age_y==6))
+
+#lsmeans(lm,pairwise~as.factor(redData$age_y), adjust="Bonferroni")
+
+```
+
+
+
+
+
+
+
+
+Test if RLTL depends on RLTL measurement at t-1
+
+```{r}
+mod1<-lmer(as.numeric(paste(redData$residual_rltl_t))~ as.numeric(paste(redData$residual_rltl_tminus1))+redData$age_y + redData$feed_group + redData$genetic_group+ redData$birth_year+ as.numeric(paste(redData$sample_interval))+ redData$health_event_2week+ (1|redData$recoded_id), na.action=na.exclude)
+
+summary(mod1)
+anova(mod1)
+
+
+mod1<-lmer(as.numeric(paste(redData$residual_rltl_t))~ as.numeric(paste(redData$residual_rltl_tminus1))+redData$age_y +   (1|redData$recoded_id), na.action=na.exclude)
+
+summary(mod1)
+anova(mod1)
+
+mod1out<-as.data.frame(VarCorr(mod1),comp=c("Variance", "Std.Dev."))
+repET<-mod1out[1,4]/sum(mod1out[1:nrow(mod1out),4])
+repET
+
+```
+
+```{r}
+#ggplot(redData, aes(x=age_d, y=as.numeric(paste(redData$diff_rltl_res))))+geom_point()+theme_gray(20)+ xlab("Age in days")+ ylab("RLTL change")
+
+agePlot<- ggplot(redData, aes(x=as.factor(redData$age_y), y=as.numeric(paste(redData$diff_rltl_res))))+geom_jitter()+theme_gray(20)+ xlab("Age in years")+ ylab("RLTL change")+ geom_boxplot()
+
+grid.arrange(SubsPlot, agePlot, ncol=2)
+```
+
+Investigate the effect of average telomere length over life on productive life span:
+
+```{r}
+produc <-as.numeric(uDeadData$amp_305_lactation)
+
+mod2<-glm(as.numeric(paste(uDeadData$herd_life))~uDeadData$average_resid + produc)
+summary(mod2)
+
+AvPlot<-ggplot(uDeadData, aes(y=as.numeric(paste(uDeadData$herd_life)), x=average_resid))+geom_point()+  
+  #stat_smooth(method=lm, formula = y~x,)+
+  xlab("Mean RLTL")+ ylab("Productive lifespan")+theme_gray(20)
+
+AvPlot
+```
+
+Average telomere length over life is not significantly correlated with productive lifespan.
+
+
+Testing the relationship between telomere change over life and productive lifespan:
+
+```{r}
+
+
+# without milk yield:
+
+mod3a<-glm(as.numeric(paste(uDeadData$herd_life)) ~ uDeadData$average_resid + as.numeric(paste(uDeadData$rltl_change))+ as.numeric(paste(uDeadData$abs_rltl_change))) 
+
+summary(mod3a)
+AIC(mod3a)
+
+df3a<-as.data.frame(round(coef(summary(mod3a)),3))
+
+#write.csv(df3a, "/Users/luiseseeker/Desktop/PNAS/df3a.csv")
+
+# more than 2 samples
+
+mod3b<-glm(as.numeric(paste(uDeadDataMore2$herd_life))~as.numeric(paste(uDeadDataMore2$rltl_change))+ as.numeric(paste(uDeadDataMore2$abs_rltl_change))+ uDeadDataMore2$average_resid)
+
+summary(mod3b)
+AIC(mod3b)
+
+df3b<-as.data.frame(round(coef(summary(mod3b)),3))
+
+#write.csv(df3b, "/Users/luiseseeker/Desktop/PNAS/df3b.csv")
+
+mod3br<-glm(as.numeric(paste(uDeadDataMore2$herd_life))~as.numeric(paste(uDeadDataMore2$rltl_change)))
+
+summary(mod3br)
+
+df3br<-as.data.frame(round(coef(summary(mod3br)),3))
+
+#write.csv(df3br, "/Users/luiseseeker/Desktop/PNAS/df3br.csv")
+
+# with milk yield:
+Mdata<-subset(uDeadData, uDeadData$amp_305_lactation!="NULL")
+produc<-as.numeric(Mdata$amp_305_lactation)
+
+mod3M<-glm(as.numeric(paste(Mdata$herd_life))~as.numeric(paste(Mdata$rltl_change)) + produc + as.numeric(paste(Mdata$abs_rltl_change))+ Mdata$average_resid)
+
+
+
+summary(mod3M)
+AIC(mod3M)
+
+
+df3M<-as.data.frame(round(coef(summary(mod3M)),3))
+
+#write.csv(df3M, "/Users/luiseseeker/Desktop/PNAS/df3M.csv")
+
+# backwards elimination
+mod3Mr<-glm(as.numeric(paste(Mdata$herd_life))~as.numeric(paste(Mdata$rltl_change)) + produc)
+
+summary(mod3Mr)
+AIC(mod3Mr)
+
+
+df3Mr<-as.data.frame(round(coef(summary(mod3Mr)),3))
+
+#write.csv(df3Mr, "/Users/luiseseeker/Desktop/PNAS/df3Mr.csv")
+
+
+#Prod and more than 2 samples:
+
+M2data<-subset(uDeadDataMore2, uDeadDataMore2$amp_305_lactation!="NULL")
+product<-as.numeric(M2data$amp_305_lactation)
+
+mod3M2<-glm(as.numeric(paste(M2data$herd_life))~as.numeric(paste(M2data$rltl_change))+ as.numeric(paste(M2data$abs_rltl_change))+ M2data$average_resid + product)
+
+summary(mod3M2)
+AIC(mod3M2)
+
+df3M2<-as.data.frame(round(coef(summary(mod3M2)),3))
+
+#write.csv(df3M2, "/Users/luiseseeker/Desktop/PNAS/df3M2.csv")
+
+#backwards elimination
+
+mod3M2r<-glm(as.numeric(paste(M2data$herd_life))~as.numeric(paste(M2data$rltl_change))+ product)
+
+summary(mod3M2r)
+AIC(mod3M2r)
+
+df3M2r<-as.data.frame(round(coef(summary(mod3M2r)),3))
+
+#write.csv(df3M2r, "/Users/luiseseeker/Desktop/PNAS/df3M2r.csv")
+
+################
+################
+
+##################
+
+#only samples that have been taken after 15 d of life
+uDeadDataLP<-subset(uDeadDataL, uDeadDataL$amp_305_lactation!="NULL")
+product<-as.numeric(uDeadDataLP$amp_305_lactation)
+
+mod3L<-glm(as.numeric(paste(uDeadDataLP$herd_life))~as.numeric(paste(uDeadDataLP$rltl_change))+ product)
+
+summary(mod3L)
+AIC(mod3L)
+
+df3M2r<-as.data.frame(round(coef(summary(mod3M2r)),3))
+
+#write.csv(df3M2r, "/Users/luiseseeker/Desktop/PNAS/df3M2r.csv")
+
+
+
+##################################
+############
+#######
+######
+produc<-as.numeric(uDeadData$amp_305_lactation)
+
+mod3a<-glm(as.numeric(paste(uDeadData$herd_life))~ as.numeric(paste(uDeadData$rltl_change))+ produc)
+
+summary(mod3a)
+AIC(mod3a)
+
+mod3b<-glm(as.numeric(paste(uDeadData$herd_life))~ as.numeric(paste(uDeadData$abs_rltl_change))+produc)
+summary(mod3b)           
+AIC(mod3b)
+
+AIC(mod3b)-AIC(mod3a)
+
+#seperately mean RLTL change and mean absolute RLTL change are both significant. However, based on AIC values the model including mean RLTL change fits better. 
+
+mod3c<-glm(as.numeric(paste(uDeadData$herd_life))~ as.numeric(paste(uDeadData$rltl_change))+ as.numeric(paste(uDeadData$abs_rltl_change))+ uDeadData$average_resid+produc)
+             
+
+summary(mod3c)
+
+dfSum<-as.data.frame(round(coef(summary(mod3c)),3))
+
+#write.csv(dfSum, "/Users/luiseseeker/Desktop/PNAS/S5_LifeSpan_RLTLchange.csv" )
+
+mod3d<-glm(as.numeric(paste(uDeadData$herd_life))~ as.numeric(paste(uDeadData$rltl_change))+ as.numeric(paste(uDeadData$abs_rltl_change))+produc)
+             
+
+summary(mod3d)
+
+
+
+#changePlot<-ggplot(uDeadData, aes(y=as.numeric(paste(uDeadData$herd_life)), x=as.numeric(paste(uDeadData$rltl_change))))+
+ # geom_point()+  
+  #geom_smooth(method="lm", formula = y~x,)+
+  #xlab("Mean RLTL change")+ 
+  #ylab("Productive lifespan")+theme_gray(20)
+
+
+
+#ABSchangePlot<-ggplot(uDeadData, aes(y=as.numeric(paste(uDeadData$herd_life)), x=as.numeric(paste(uDeadData$abs_rltl_change))))+geom_point()+  geom_smooth(method="lm", formula = y~x,)+xlab("Mean absolute RLTL change")+ ylab("Productive lifespan")+theme_gray(20)
+
+```
+
+Average telomere change over life is associated with productive lifespan. 
+
+
+Repeat analysis for animals with more than two samples:
+uDeadDataMore2
+
+```{r}
+product<-as.numeric(paste(uDeadDataMore2$amp_305_lactation))
+mod2<-glm(as.numeric(paste(uDeadDataMore2$herd_life))~uDeadDataMore2$average_resid+product)
+summary(mod2)
+
+ggplot(uDeadDataMore2, aes(y=as.numeric(paste(uDeadDataMore2$herd_life)), x=average_resid))+geom_point()+  
+  #stat_smooth(method=lm, formula = y~x,)+
+  xlab("Mean RLTL")+ ylab("Productive lifespan")+theme_gray(20)
+
+mod3a<-glm(as.numeric(paste(uDeadDataMore2$herd_life))~ as.numeric(paste(uDeadDataMore2$rltl_change))+product)
+
+summary(mod3a)
+AIC(mod3a)
+
+mod3b<-glm(as.numeric(paste(uDeadDataMore2$herd_life))~ as.numeric(paste(uDeadDataMore2$abs_rltl_change))+ product)
+summary(mod3b)           
+AIC(mod3b)
+
+AIC(mod3b)-AIC(mod3a)
+
+
+#All together
+mod3c<-glm(as.numeric(paste(uDeadDataMore2$herd_life))~ as.numeric(paste(uDeadDataMore2$rltl_change))+ as.numeric(paste(uDeadDataMore2$abs_rltl_change))+ uDeadDataMore2$average_resid +product)
+             
+
+summary(mod3c)
+
+mod3d<-glm(as.numeric(paste(uDeadDataMore2$herd_life))~ as.numeric(paste(uDeadDataMore2$rltl_change))+ as.numeric(paste(uDeadDataMore2$abs_rltl_change))+ product)
+             
+
+summary(mod3d)
+
+
+More2Plot<-ggplot(uDeadDataMore2, aes(y=as.numeric(paste(uDeadDataMore2$herd_life)), x=as.numeric(paste(uDeadDataMore2$rltl_change))))+geom_point()+ geom_smooth(method="lm", formula = y~x, se=TRUE)+xlab("Mean RLTL change (reduced)")+ ylab("Productive lifespan")+theme_gray(20)
+
+#More2Plot
+
+ 
+#grid.arrange(AvPlot, changePlot, More2Plot, ABSchangePlot, ncol=4)
+
+#g<-arrangeGrob(AvPlot, changePlot, More2Plot, ABSchangePlot, ncol=4)
+
+#ggsave(file="/Users/luiseseeker/Desktop/PNAS/ChangeLife.pdf", g, width = 20, height = 5)
+```
+
+Plot relationship between RLTL change and productive lifespan pre-adjusted for milk yield
+
+```{r}
+lm1<-lm(as.numeric(paste(Mdata$herd_life))~as.numeric(paste(Mdata$amp_305_lactation)))
+summary(lm1)
+
+Mdata$MilkAdjustedHerdLife<-resid(lm1)
+
+lm2<-lm(Mdata$MilkAdjustedHerdLife~Mdata$rltl_change)
+summary(lm2)
+
+AdjHLplot<-ggplot(Mdata, aes(y=as.numeric(paste(Mdata$MilkAdjustedHerdLife)), x=as.numeric(paste(Mdata$rltl_change))))+geom_point()+ geom_smooth(method="lm", formula = y~x, se=TRUE)+xlab("Mean RLTL change")+ ylab("Adjusted prod. lifespan")+theme_gray(20)
+
+AdjHLplot
+```
+
+
+## Analysis of change between first two measurements within first year and produrctive lifespan:
+
+### Prepare data
+```{r, echo = FALSE}
+
+##############################
+##############################
+################################
+
+# needs lots of work!!!!
+
+df<-data.frame(recoded_id=unique(data$recoded_id))
+
+RLTL0<-subset(data, data$age_y==0)
+RLTL1<-subset(data, data$age_y==1)
+
+df2<-data.frame(recoded_id=RLTL0$recoded_id, RLTL0=RLTL0$residual_rltl_t, S_date0=RLTL0$sample_date, herd_life= RLTL0$herd_life, cull_date=RLTL0$cull_date, dob=RLTL0$dob, tel_sample_no= RLTL0$tel_sample_no)
+
+df3<-data.frame(recoded_id=RLTL1$recoded_id, RLTL1=RLTL1$residual_rltl_t, S_date1=RLTL1$sample_date)
+
+InData<-merge(df, df2, by="recoded_id")
+InData2<-merge(InData, df3, by="recoded_id")
+
+InData2$sample_interval= as.Date(InData2$S_date1, "%d/%m/%Y")-as.Date(InData2$S_date0, "%d/%m/%Y")
+InData2$sInt<-as.numeric(InData2$sample_interval)
+InData2$CutoffDate<-"01/01/2017"
+InData2$Event<-ifelse(InData2$cull_date=="NULL",0,1)
+InData2$TimeMeasure<-ifelse(InData2$Event==0, as.Date(InData2$CutoffDate, "%d/%m/%Y")- as.Date(InData2$dob, "%d/%m/%Y"), as.numeric(paste(InData2$herd_life)))
+nrow(InData2)
+
+InData2$ResDiff<- InData2$RLTL1-InData2$RLTL0
+InData2$ChangeRate<-InData2$ResDiff/InData2$sInt
+
+InData2$ResDiff_4G<-ifelse(InData2$ResDiff <= quantile(InData2$ResDiff)[2], 1, ifelse(InData2$ResDiff<= quantile(InData2$ResDiff)[3], 2, ifelse(InData2$ResDiff<= quantile(InData2$ResDiff)[4], 3, 4)))
+
+InData2$ResDiff_3G<-ntile(InData2$ResDiff,3)
+
+InData2$ResDiff_2G<-ifelse(InData2$ResDiff<= median(InData2$ResDiff),1,2)
+```
+
+```{r}
+
+# for the linear model, I have to exclude animals with no clear phenotype, which means animals that were still alive at the 1.1.2017 are excluded
+InData2Dead<-subset(InData2, InData2$herd_life!="NULL")
+
+mod4<-glm(as.numeric(paste(InData2Dead$herd_life))~ InData2Dead$ChangeRate)
+          
+summary(mod4)
+
+```
+
+```{r}
+
+inDf<-as.data.frame(round(coef(summary(mod4)),3))
+#write.csv(inDf, "/Users/luiseseeker/Desktop/PNAS/InitialChange.csv")
+
+
+mod4b<-glm(as.numeric(paste(InData2Dead$herd_life))~ InData2Dead$ResDiff)
+          
+summary(mod4b)
+
+```
+
+```{r}
+inDfb<-as.data.frame(round(coef(summary(mod4b)),3))
+#write.csv(inDfb, "/Users/luiseseeker/Desktop/PNAS/InitialChange_b.csv")
+
+
+#For a cox proportional harzard analysis, I don't have to exclude animals that are still alive which may increase the statistical power. 
+
+
+
+#early life measurements (at 0 years of age and 1 year of age) 
+InChange<-as.numeric(paste(InData2$ResDiff))
+hist(InChange)
+coxFit<-coxph(Surv(InData2$TimeMeasure, InData2$Event == 1)~InData2$ResDiff)
+
+summary(coxFit)
+
+```
+
+
+```{r}
+ggplot(InData2, aes(x=InData2$ResDiff)) +geom_histogram(colour= "black", fill = mycoloursP[4])+ xlab("Initial RLTL change") + theme_classic(20)
+
+```
+
+
+```{r}
+
+# change on discrete change to plot
+coxFit<-coxph(Surv(InData2$TimeMeasure, InData2$Event == 1)~InData2$ResDiff_3G)
+
+summary(coxFit)
+
+coxFit<-survfit(Surv(InData2$TimeMeasure, InData2$Event == 1)~InData2$ResDiff_3G)
+summary(coxFit)
+
+```
+
+
+```{r}
+
+write.csv(InData2, "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/rawdata/CalfSurv.csv")
+#### plot results for discrete scale
+
+#ggsurvplot gives p-values that are different to the ones above calculated with coxph. I don't know where they are taken from therefor decided to report the ones I understand, the ones calculated with coxph:
+
+g1<- ggsurvplot(coxFit, data=InData2, pval = 0.006, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (most RLTL attrition)", "Tertile 2", "Tertile 3 (least RLTL attrition"))+ guides(colour = guide_legend(nrow = 3))+theme_survminer(40)
+
+  
+ggsurvplot(coxFit, data=InData2, pval = 0.006, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (most RLTL attrition)", "Tertile 2", "Tertile 3 (least RLTL attrition"))+theme_survminer(40)
+
+
+ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/InitialChange.pdf", print(g1))
+
+
+#in response to editor plot as dotplot
+dInData<-subset(InData2, InData2$cull_date != "NULL")
+
+ggplot(dInData, aes(x=as.numeric(paste(dInData$herd_life)), y= ResDiff)) + geom_point() + xlab("productive life span")+ylab("RLTL change")+ geom_smooth(method="lm", formula = y~x, se=TRUE)+ theme_grey(20)
+```
+
+
+```{r}
+ggplot(InData2, aes(x=as.factor(InData2$ResDiff_3G), y=InData2$ResDiff)) + geom_boxplot() +xlab("RLTL change tertiles") + ylab("RLTL change")+ theme_light(20)+ geom_jitter()
+
+
+```
+
+```{r}
+uRedData<-redData[!duplicated(redData$recoded_id),] 
+
+
+
+coxData<-data.frame(recoded_id=uRedData$recoded_id, dob=uRedData$dob, herd_life=uRedData$herd_life, cull_date=uRedData$cull_date, average_resid=uRedData$average_resid, rltl_change=uRedData$rltl_change, abs_rltl_change=uRedData$abs_rltl_change, amp_305_lactation=uRedData$amp_305_lactation, RLTL_1=uRedData$RLTL_1)
+
+
+#extract maximum sample number per animal and create a data frame that only contains the ear tag and the associated maximum sample number.
+
+sampleNo<-data.frame(recoded_id= redData$recoded_id, tel_sample_no= redData$tel_sample_no)
+
+
+maxSN<-data.frame(tapply(sampleNo$tel_sample_no, sampleNo$recoded_id, function(x){which.max(x)}))
+nrow(maxSN)
+
+
+names(maxSN)<-"totalTELnumber"
+
+rownames(maxSN)
+
+maxSN$recoded_id<-rownames(maxSN)
+rownames(maxSN)<-c()
+
+head(maxSN)
+
+###
+
+coxData<-merge(coxData, maxSN, by = "recoded_id")
+
+
+
+
+
+coxData$CutoffDate<-"01/01/2017"
+coxData$Event<-ifelse(coxData$cull_date=="NULL", 0, 1)
+coxData$TimeMeasure<-ifelse(coxData$Event==0, as.Date(coxData$CutoffDate, "%d/%m/%Y")- as.Date(coxData$dob, "%d/%m/%Y"), as.numeric(paste(coxData$herd_life)))
+
+#add groups for all lifelong change measurements that are split at the median
+coxData$AverageResi_2G<-ifelse(coxData$average_resid <= median(coxData$average_resid), 1, 2)
+coxData$rltl_change_2G<-ifelse(coxData$rltl_change <= median (coxData$rltl_change), 1, 2 )
+coxData$abs_rltl_change_2G<-ifelse(coxData$abs_rltl_change <= median (coxData$abs_rltl_change), 1, 2 )
+
+#split at quartiles
+Q1<-quantile(coxData$average_resid)
+
+coxData$AverageResi_4G<-ifelse(coxData$average_resid <= quantile(coxData$average_resid)[2], 1, ifelse(coxData$average_resid <= quantile(coxData$average_resid)[3], 2, ifelse(coxData$average_resid <= quantile(coxData$average_resid)[4], 3, 4)))
+
+coxData$rltl_change_4G<-ifelse(coxData$rltl_change <= quantile(coxData$rltl_change)[2], 1, ifelse(coxData$rltl_change <= quantile(coxData$rltl_change)[3], 2, ifelse(coxData$rltl_change<= quantile(coxData$rltl_change)[4], 3, 4)))
+
+coxData$abs_rltl_change_4G<-ifelse(coxData$abs_rltl_change <= quantile(coxData$abs_rltl_change)[2], 1, ifelse(coxData$abs_rltl_change <= quantile(coxData$abs_rltl_change)[3], 2, ifelse(coxData$abs_rltl_change<= quantile(coxData$abs_rltl_change)[4], 3, 4)))
+
+
+coxData$average_resid_3G<-ntile(coxData$average_resid,3)
+coxData$rltl_change_3G<-ntile(coxData$rltl_change,3)
+coxData$abs_rltl_change_3G<-ntile(coxData$abs_rltl_change,3)
+
+# models:
+##Average lifetime telomere length
+### condinuous variable:
+coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$average_resid)
+
+summary(coxFit)
+
+summary(coxFit)$logtest["pvalue"]
+
+### discrete scale
+
+coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$average_resid_3G)
+summary(coxFit)
+
+coxFit<-survfit(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$average_resid_3G)
+
+
+
+#### plot results for discrete scale
+
+g2<-ggsurvplot(coxFit, data=coxData, pval = 0.858, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table = FALSE, legend.labs=c("Tertile 1 (shortest mean RLTL)", "Tertile 2", "Tertile 3 (longest mean RLTL)"))+theme_survminer(40)+ guides(colour = guide_legend(nrow = 3))
+
+ggsurvplot(coxFit, data=coxData, pval = 0.858, risk.table.y.text.col = T, risk.table = TRUE, legend.labs=c("Tertile 1 (shortest mean RLTL)", "Tertile 2", "Tertile 3 (longest mean RLTL)"))+ guides(colour = guide_legend(nrow = 3))+ theme_survminer(10)
+
+
+#ggsurvplot gives p-values that are different to the ones above calculated with coxph. I don't know where they are taken from therefor decided to report the ones I understand, the ones calculated with coxph:
+
+ggsurvplot(coxFit, data=coxData, pval = 0.858, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = TRUE, legend.labs=c("Tertile 1 (shortest mean RLTL)", "Tertile 2", "Tertile 3 (longest mean RLTL)"))+theme_survminer(40)
+
+ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/MeanRLTL.pdf", print(g2))
+
+
+
+write.csv(coxData, "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/rawdata/CaxData.csv")
+
+
+
+#in response to editor plot as dotplot
+dData<-subset(coxData, coxData$cull_date != "NULL")
+
+ggplot(dData, aes(x=as.numeric(paste(dData$herd_life)), y= rltl_change)) + geom_point() + xlab("productive life span")+ylab("Mean RLTL change")+ geom_smooth(method="lm", formula = y~x, se=TRUE)+ theme_grey(20)
+
+ggplot(dData, aes(x=as.numeric(paste(dData$herd_life)), y= rltl_change)) + geom_point() + xlab("productive life span")+ylab("Mean RLTL change")+ theme_grey(20)
+
+ggplot(dData, aes(x=as.numeric(paste(dData$herd_life)), y= abs_rltl_change)) + geom_point() + xlab("productive life span")+ylab("Mean absolute RLTL change")+ theme_grey(20) +geom_smooth(method="lm", formula = y~x, se=TRUE)
+
+ggplot(dData, aes(x=as.numeric(paste(dData$herd_life)), y= average_resid)) + geom_point() + xlab("productive life span")+ylab("Mean RLTL")+ theme_grey(20) +geom_smooth(method="lm", formula = y~x, se=TRUE)
+
+
+cor.test(as.numeric(paste(dData$herd_life)), dData$abs_rltl_change)
+```
+
+
+```{r}
+## continuous scale
+coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$abs_rltl_change)
+
+summary(coxFit)
+
+### discrete scale
+coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$abs_rltl_change_4G)
+
+summary(coxFit)
+
+
+coxFit<-survfit(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$abs_rltl_change_4G)
+
+
+#### plot results for discrete scale
+
+ChangeQuart<-ggsurvplot(coxFit, data=coxData, pval = TRUE, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Quartile 1 (least RLTL change)", "Quartile 2", "Quartile 3", "Quartile 4 (most RLTL change)"))+theme_survminer(40)+ guides(colour = guide_legend(nrow = 3))
+
+ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/ChangeQuartRLTL.pdf", print(ChangeQuart))
+
+```
+
+```{r}
+
+### discrete scale
+coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$abs_rltl_change_3G)
+
+summary(coxFit)
+
+
+
+coxFit<-survfit(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$abs_rltl_change_3G)
+
+summary(coxFit)
+
+#### plot results for discrete scale
+
+g3<- ggsurvplot(coxFit, data=coxData, pval = 0.029, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (least absolute RLTL change)", "Tertile 2", "Tertile 3 (most absolute RLTL change)")) +theme_survminer(40)+ guides(colour = guide_legend(nrow = 3))
+  
+ggsurvplot(coxFit, data=coxData, pval = 0.029, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (least abs RLTL change)", "Tertile 2", "Tertile 3 (most abs RLTL change)")) +theme_survminer(40)
+
+ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/AbsoluteRLTLchange.pdf", print(g3))
+
+```
+
+```{r}
+#continous scale
+
+coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$rltl_change)
+
+summary(coxFit)
+
+### discrete scale
+coxFit<-survfit(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$rltl_change_4G)
+
+summary(coxFit)
+
+#### plot results for discrete scale
+
+attr<-ggsurvplot(coxFit, data=coxData, pval = TRUE, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Quartile 1 (most RLTL attrition)", "Quartile 2", "Quartile 3", "Quartile 4 (least RLTL attrition)")) +theme_survminer(40)
+
+ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/RLTLattrition.pdf", print(attr))
+
+```
+
+
+
+```{r}
+#3 groups:
+coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$rltl_change_3G)
+
+summary(coxFit)
+
+coxFit<-survfit(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$rltl_change_3G)
+
+summary(coxFit)
+
+#### plot results for discrete scale
+
+g4<-ggsurvplot(coxFit, data=coxData, pval = 0.003, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (most RLTL attrition)", "Tertile 2", "Tertile 3 (least RLTL attrition)"))+theme_survminer(40)+ guides(colour = guide_legend(nrow = 3))
+  
+  
+ggsurvplot(coxFit, data=coxData, pval = 0.003, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (most RLTL attrition)", "Tertile 2", "Tertile 3 (least RLTL attrition)")) +theme_survminer(40)
+
+
+ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/RLTLchange.pdf", print(g4))
+
+
+
+
+```
+
+
+
+```{r}
+ggplot(coxData, aes(x=as.factor(coxData$abs_rltl_change_3G), y= abs_rltl_change))+geom_boxplot() + xlab("Mean absolute RLTL change tertile") + ylab("Mean absolute RLTL change")+ theme_light(20)+ geom_jitter()
+ggplot(coxData, aes(x=as.factor(coxData$rltl_change_3G), y= rltl_change))+geom_boxplot()+ xlab("Mean RLTL change tertile") + ylab("Mean RLTL change") + theme_light(20)+ geom_jitter()
+ggplot(coxData, aes(x=as.factor(coxData$average_resid_3G), y= average_resid))+geom_boxplot()+ xlab("Mean RLTL tertile") + ylab("Mean RLTL")+ theme_light(20)+ geom_jitter()
+```
+
+```{r}
+
+
+coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$RLTL_1)
+
+summary(coxFit)
+
+
+coxFit<-coxph(Surv(coxData$TimeMeasure, coxData$Event == 1)~coxData$rltl_change+ coxData$average_resid+ coxData$abs_rltl_change)
+
+summary(coxFit)
+
+#now I will include average milk production
+
+coxDataR<-subset(coxData, coxData$amp_305_lactation != "NULL")
+
+
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$average_resid+ as.numeric(paste(coxDataR$amp_305_lactation)) + coxDataR$totalTELnumber)
+
+summary(coxFit)
+
+
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$abs_rltl_change+ as.numeric(paste(coxDataR$amp_305_lactation))+coxDataR$totalTELnumber)
+
+summary(coxFit)
+
+
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$rltl_change+ as.numeric(paste(coxDataR$amp_305_lactation))+coxDataR$totalTELnumber)
+
+summary(coxFit)
+ 
+
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$RLTL_1 + as.numeric(paste(coxDataR$amp_305_lactation))+ coxDataR$totalTELnumber)
+
+summary(coxFit)
+
+#total TEL sample number was not significant and therefore will be eliminated:
+
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$average_resid+ as.numeric(paste(coxDataR$amp_305_lactation)))
+
+summary(coxFit)
+
+
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$abs_rltl_change+ as.numeric(paste(coxDataR$amp_305_lactation)))
+
+summary(coxFit)
+
+
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$rltl_change+ as.numeric(paste(coxDataR$amp_305_lactation)))
+
+summary(coxFit)
+
+
+
+#try RLTL at the age of 1 year in the same model
+
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$rltl_change+ coxDataR$RLTL_1+ as.numeric(paste(coxDataR$amp_305_lactation)))
+
+summary(coxFit)
+
+
+
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$RLTL_1 + as.numeric(paste(coxDataR$amp_305_lactation)))
+
+summary(coxFit)
+
+#all three measures in the same model:
+coxFit<-coxph(Surv(coxDataR$TimeMeasure, coxDataR$Event == 1)~coxDataR$rltl_change+coxDataR$average_resid+coxDataR$abs_rltl_change+ as.numeric(paste(coxDataR$amp_305_lactation)))
+
+summary(coxFit)
+
+#Now I try the same without the fist measurement. 
+uRedDataL<- redDataLnew[!duplicated(redDataLnew$recoded_id),]
+
+coxDataL<-data.frame(recoded_id=uRedDataL$recoded_id, dob=uRedDataL$dob, herd_life=uRedDataL$herd_life, cull_date=uRedDataL$cull_date, average_resid=uRedDataL$average_resid, rltl_change=uRedDataL$rltl_change, abs_rltl_change=uRedDataL$abs_rltl_change, amp_305_lactation= uRedDataL$amp_305_lactation)
+
+
+coxDataL$CutoffDate<-"01/01/2017"
+coxDataL$Event<-ifelse(coxDataL$cull_date=="NULL", 0, 1)
+coxDataL$TimeMeasure<-ifelse(coxDataL$Event==0, as.Date(coxDataL$CutoffDate, "%d/%m/%Y")- as.Date(coxDataL$dob, "%d/%m/%Y"), as.numeric(paste(coxDataL$herd_life)))
+
+coxFit<-coxph(Surv(coxDataL$TimeMeasure, coxDataL$Event == 1)~coxDataL$average_resid)
+
+summary(coxFit)
+
+
+coxFit<-coxph(Surv(coxDataL$TimeMeasure, coxDataL$Event == 1)~coxDataL$abs_rltl_change)
+
+summary(coxFit)
+
+
+coxFit<-coxph(Surv(coxDataL$TimeMeasure, coxDataL$Event == 1)~coxDataL$rltl_change)
+
+summary(coxFit)
+
+
+
+#now without first measurement but including milk productivity
+
+#now I will include average milk production, TEL sample number was tested, but removed from the models because it was not statistically associated with productive lifespan
+
+coxDataRL<-subset(coxDataL, coxDataL$amp_305_lactation != "NULL")
+
+coxDataRL<-merge(coxDataRL, maxSN, by = "recoded_id")
+
+
+coxFit<-coxph(Surv(coxDataRL$TimeMeasure, coxDataRL$Event == 1)~coxDataRL$average_resid+ as.numeric(paste(coxDataRL$amp_305_lactation)))
+
+summary(coxFit)
+
+
+coxFit<-coxph(Surv(coxDataRL$TimeMeasure, coxDataRL$Event == 1)~coxDataRL$abs_rltl_change+ as.numeric(paste(coxDataRL$amp_305_lactation)))
+
+summary(coxFit)
+
+
+coxFit<-coxph(Surv(coxDataRL$TimeMeasure, coxDataRL$Event == 1)~coxDataRL$rltl_change + as.numeric(paste(coxDataRL$amp_305_lactation)))
+
+summary(coxFit)
+
+coxFit<-coxph(Surv(coxDataRL$TimeMeasure, coxDataRL$Event == 1)~coxDataRL$rltl_change + coxDataRL$abs_rltl_change+ coxDataRL$average_resid+ as.numeric(paste(coxDataRL$amp_305_lactation)))
+
+summary(coxFit)
+
+
+```
+
+See if relationship remains statistically significant when only animals with more than 2 samples are included in the analysis
+
+```{r}
+
+coxData2<-data.frame(recoded_id=uDeadDataMore2$recoded_id, dob=uDeadDataMore2$dob, herd_life=uDeadDataMore2$herd_life, cull_date=uDeadDataMore2$cull_date, average_resid=uDeadDataMore2$average_resid, rltl_change=uDeadDataMore2$rltl_change, abs_rltl_change=uDeadDataMore2$abs_rltl_change, amp_305_lactation=uDeadDataMore2$amp_305_lactation, RLTL_1=uDeadDataMore2$RLTL_1)
+
+
+#add maximum sample number 
+
+coxData2<-merge(coxData2, maxSN, by = "recoded_id")
+
+
+
+
+
+coxData2$CutoffDate<-"01/01/2017"
+coxData2$Event<-ifelse(coxData2$cull_date=="NULL", 0, 1)
+coxData2$TimeMeasure<-ifelse(coxData2$Event==0, as.Date(coxData2$CutoffDate, "%d/%m/%Y")- as.Date(coxData2$dob, "%d/%m/%Y"), as.numeric(paste(coxData2$herd_life)))
+
+#add groups for all lifelong change measurements that are split at the median
+coxData2$AverageResi_2G<-ifelse(coxData2$average_resid <= median(coxData2$average_resid), 1, 2)
+coxData2$rltl_change_2G<-ifelse(coxData2$rltl_change <= median (coxData2$rltl_change), 1, 2 )
+coxData2$abs_rltl_change_2G<-ifelse(coxData2$abs_rltl_change <= median (coxData2$abs_rltl_change), 1, 2 )
+
+#split at quartiles
+
+
+coxData2$average_resid_3G<-ntile(coxData2$average_resid,3)
+coxData2$rltl_change_3G<-ntile(coxData2$rltl_change,3)
+coxData2$abs_rltl_change_3G<-ntile(coxData2$abs_rltl_change,3)
+
+# models:
+##Average lifetime telomere length
+### condinuous variable:
+coxFit<-coxph(Surv(coxData2$TimeMeasure, coxData2$Event == 1)~coxData2$rltl_change)
+
+summary(coxFit)
+
+
+### discrete scale
+
+coxFit<-coxph(Surv(coxData2$TimeMeasure, coxData2$Event == 1)~coxData2$average_resid_3G)
+summary(coxFit)
+
+coxFit<-survfit(Surv(coxData2$TimeMeasure, coxData2$Event == 1)~coxData2$average_resid_3G)
+
+
+
+#### plot results for discrete scale
+
+survp<- ggsurvplot(coxFit, data=coxData2, pval = TRUE, ggtheme = theme_minimal(), risk.table.y.text.col = T, risk.table.y.text = FALSE, legend.labs=c("Tertile 1 (shortest mean RLTL)", "Tertile 2", "Tertile 3 (longest mean RLTL)"))+theme_survminer(40)
+
+ggsave(file = "/Users/luise/Documents/Work/CattleTelomereLength/AgingCell/Images/AverageRLTL.pdf", print(survp))
+
+```
+
+
+
+
+
+
+Some more figures:
+
+```{r}
+
+variable<-as.numeric(paste(data$sample_interval))
+meanVar<-mean(variable, na.rm= TRUE)
+sdVar<-sd(variable, na.rm=TRUE)
+
+ggplot(data, aes(x = variable)) + 
+	geom_histogram(colour= "black", fill = "yellow") + xlab("Sample interval in days") +   geom_vline(xintercept= meanVar,  colour="red")+
+  theme_gray(20)
+
+  #+
+	#stat_function(
+	#	fun = function(x, mean, sd, n){
+	#		 n*50* dnorm(x = x, mean = mean, sd = sd)
+	#	}, 
+	#	args = with(data, c(mean = meanVar, sd = sdVar, n = length(variable))))
+
+
+uData<-data[!duplicated(data$recoded_id),]
+
+variable<-as.factor(paste(uData$birth_year))
+
+ggplot(uData, aes(x = variable)) + 
+	geom_bar(colour= "black", fill = "yellow") + xlab("Birth year")+ theme_gray(20)
+
+
+#Average milk production
+
+variable<-as.numeric(paste(uData$amp_305_lactation))
+meanVar<-mean(variable, na.rm= TRUE)
+sdVar<-sd(variable, na.rm=TRUE)
+
+ggplot(uData, aes(x = variable)) + 
+	geom_histogram(colour= "black", fill = "yellow") + xlab("Average milk production") +   geom_vline(xintercept= meanVar,  colour="red")+
+  theme_gray(20)
+
+# cull reasons
+
+variable<-as.factor(paste(uDeadData$cull_reson))
+
+ggplot(uDeadData, aes(x = variable)) + 
+	geom_bar(colour= "black", fill = "yellow") + xlab("Cull reason")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+
+# fertility events
+newdata <- subset(uData, uData$health_event_fertil_all != "NULL") 
+variable<-as.integer(paste(newdata$health_event_fertil_all))
+
+ggplot(newdata, aes(x = variable)) + 
+	geom_bar(colour= "black", fill = "yellow") + xlab("Fertility events")+
+  theme_gray(20)+
+  scale_x_continuous(breaks=c(0:12))
+
+#mastitis events
+newdata <- subset(uData, uData$health_event_mastitis_all != "NULL") 
+variable<-as.integer(paste(newdata$health_event_mastitis_all))
+
+ggplot(newdata, aes(x = variable)) + 
+	geom_bar(colour= "black", fill = "yellow") + xlab("Mastitis events")+
+  theme_gray(20)+
+  scale_x_continuous(breaks=c(0:8))
+
+#lameness events
+newdata <- subset(uData, uData$health_event_lame_all != "NULL") 
+variable<-as.integer(paste(newdata$health_event_lame_all))
+
+ggplot(newdata, aes(x = variable)) + 
+	geom_bar(colour= "black", fill = "yellow") + xlab("Lameness events")+
+  theme_gray(20)+
+  scale_x_continuous(breaks=c(0:11))
+
+```
+
+# Discussion
+We have presented, to our knowledge, the first demonstration in any vertebrate that lifelong variation in telomere attrition rather than variation in constitutive individual differences in average telomere length predict health outcomes and lifespan. While there is mounting evidence that telomere length predicts mortality, health and life history in humans as well as birds and non-human mammals (Bakaysa et al., 2007; Bichet et al., 2019; Boonekamp et al., 2013; Cawthon, Smith, O’Brien, Sivatchenko, & Kerber, 2003; Fairlie et al., 2015; Mark Haussmann, Winkler, & Vleck, 2005; Heidinger et al., 2012; Nettle, Monaghan, Boner, Gillespie, & Bateson, 2013; Voillemot et al., 2012; Wilbourn et al., 2018), very few studies have been able to accumulate long-term longitudinal data capable of differentiating the role of among- and within-individual variation in TL to such relationships. Our data support the contention that within-individual directional change over time in TL is more important than stable among-individual differences in predicting overall health. Individuals in our study which showed a greater propensity to shorten RLTL across sampling points were culled earlier, mainly due to health issues described above. There was no relationship between productive lifespan and an individual’s average RLTL. Future studies will show how well our results generalise to other systems as telomere biology is variable amongst species. Cattle telomere biology seems to be similar to other ruminants, horses, zebras, tapirs some whales and primates including humans in that they have relatively short telomeres and a tight regulation of telomerase expression (Gomes et al., 2011). If our results generalise to some of those other systems and contexts, they have important implications for the utility of TL as a biomarker of health and fitness, lending support to the idea that TL change is an indirect marker reflecting past physiological insults and stress rather than an indicator of constitutive or genetically-based robustness to life’s challenges. Our data also highlight the importance of collecting longitudinal telomere measurements, by showing that in some species it is within-individual change over time in TL that carries the important biological signal. 
+
+Our study animals varied considerably in the magnitude and direction of RLTL change across consecutive sampling points. This is in accordance with other longitudinal studies that have reported a wide variation in TL change, alongside evidence that a large proportion of individuals show telomere lengthening over time (Bize et al., 2009; Chen et al., 2011; Farzaneh-Far et al., 2010; Gardner et al., 2005; Huzen et al., 2014; Kark, Goldberger, Kimura, Sinnreich, & Aviv, 2012; Nordfjäll et al., 2009; Shalev et al., 2012; Steenstrup et al., 2013; Svenson et al., 2011). Whilst the vast majority of studies linking telomere length with health and fitness remain cross-sectional, a growing number of longitudinal studies have found that individuals that lose more TL across samples have reduced survival prospects (Barrett et al., 2013; Bize et al., 2009; Boonekamp et al., 2014; Goglin et al., 2016). However, these studies tend to involve two samples taken per individual or a follow-up period that represents only a small fraction of the total lifespan of the study species. A lifelong study of TL and lifespan in zebra finches found that TL measured in early life was a better predictor of subsequent survival than measures from later life, but the role of change in telomere length across sampling points was not investigated (Heidinger et al., 2012). Here we show that, despite TL being moderately consistent across the lifetimes of individuals, there remains considerable within-individual variation and the pattern of change in TL over an individual’s life is highly dynamic. Short-term environmental fluctuations impacting TL dynamics could be responsible and may impact individuals in different ways. In humans many lifestyle factors such as socio-economic status, psychological stress, smoking and body mass index are known to influence telomere length (Cherkas et al., 2008; Epel, Daubenmier, Moskowitz, Folkman, & Blackburn, 2009; Huzen et al., 2014; Kim et al., 2009; Shalev et al., 2012). In animal studies chronic infection  and exposure to stressful situations have been linked to telomere shortening (Asghar, Hasselquist, Zehtindjiev, Westerdahl, & Bensch, 2015; Nettle et al., 2013; Reichert et al., 2014). Whilst we were unable to identify variables other than age which predicted within-individual TL change in our study system, individuals with a greater propensity to lose TL over time had shorter productive lives, implying changes in TL reflect important environmental or physiological variation linked to health. From a telomere biology perspective, it would be interesting to investigate changes not only in mean TL but also in its variance over time, preferentially using a technique like STELA or TESLA that allows the detection of critically short telomeres as well (Baird, Rowson, Wynford-Thomas, & Kipling, 2003; Lai et al., 2017). However, if the focus is to find good markers for animal breeding and health those techniques are not economically practical. 
+
+Our results have important implications for the application of TL as a biomarker within animal breeding and health. Productive lifespan describes the time from birth to culling and differs from measures of “longevity” or “lifespan” in human or wild animal studies because the animals are culled for reasons relating mainly to health and productivity. From an animal production perspective, a biomarker which could predict the productive lifespan of livestock from a relatively early age would represent an exciting target phenotype for use in selective breeding if heritable or for use in animal welfare monitoring if influenced by the environment. In the present study we showed that RLTL attrition predicted productive lifespan. The fact that both early life and lifelong RLTL shortening predicts earlier culling does support recent suggestions that TL may be useful as a biomarker of stress and welfare in livestock (Melissa Bateson, 2016; Brown, Dechow, Liu, Harvatine, & Ott, 2012). Many previous studies in birds and humans have found that experience of past stress is associated with shorter telomeres (Angelier, Vleck, Holberton, & Marra, 2013; Asghar et al., 2015; Cherkas et al., 2006; Entringer et al., 2011; Entringer et al., 2013; Epel et al., 2004; Haussmann, Longenecker, Marchetto, Juliano, & Bowden, 2012; Nettle et al., 2017). In our study, cattle showing RLTL attrition may be those that have experienced some form of recent immediate stress or minor infection. Repeated bouts of such stress, reflected by higher average RLTL attrition through life, may result in the development of health issues that lead to culling. Whilst the results of the present study suggest that longitudinal RLTL change itself may be a useful biomarker of health and welfare in livestock, a key area for further study is the causes of variation in RLTL change, as these may help us to understand sources of physiological stress for domestic animals and help improve animal welfare and productivity. 
+
+# Acknowledgements
+
+We thank everyone involved in collecting blood samples on the Crichton farm, particularly Hannah Dykes and Isla McCubbin. We also thank the SynthSys facility at the University of Edinburgh, particularly Eliane Salvo-Chirnside, for their support with the liquid handling robot. Our work was funded by the Biotechnology and Biological Sciences Research Council (BB/L007312/1; http://www.bbsrc.ac.uk/) awarded to GB. LS received a studentship from Scotland's Rural College (http://www.sruc.ac.uk/).  
+
+# References
+
+Angelier, F., Costantini, D., Blévin, P., & Chastel, O. (2017). Do glucocorticoids mediate the link between environmental conditions and telomere dynamics in wild vertebrates? A review. General and Comparative Endocrinology, 256, 99–111. https://doi.org/10.1016/j.ygcen.2017.07.007
+
+Angelier, F., Vleck, C. M., Holberton, R. L., & Marra, P. P. (2013). Telomere length, non-breeding habitat and return rate in male American redstarts. Functional Ecology, 27(2), 342–350. https://doi.org/10.1111/1365-2435.12041
+
+Asghar, M, Hasselquist, D., Zehtindjiev, P., Westerdahl, H., & Bensch, S. (2015). Hidden costs of infection: Chronic malaria accelerates telomere degradation and senescence in wild birds, 347(6220), 9–12.
+
+Asghar, Muhammad, Bensch, S., Tarka, M., Hansson, B., Hasselquist, D., & Asghar, M. (2015). Maternal and genetic factors determine early life telomere length. Proceedings of the Royal Society B.
+
+Atema, E., Mulder, E., Dugdale, H. L., Briga, M., van Noordwijk, A. J., & Verhulst, S. (2015). Heritability of telomere length in the Zebra Finch. Journal of Ornithology, 156(4), 1113–1123. https://doi.org/10.1007/s10336-015-1212-7
+
+Aubert, G., & Lansdorp, P. M. (2008). Telomeres and aging. Physiological Reviews, 88(2), 557–579. https://doi.org/10.1152/physrev.00026.2007
+
+Aviv, A., & Shay, J. W. (2018). Reflections on telomere dynamics and ageing-related diseases in humans. Philosophical Transactions of the Royal Society of London. Series B, Biological Sciences, 373(1741), 20160436. https://doi.org/10.1098/rstb.2016.0436
+
+Baerlocher, G. M., Rice, K., Vulto, I., & Lansdorp, P. M. (2007). Longitudinal data on telomere length in leukocytes from newborn baboons support a marked drop in stem cell turnover around 1 year of age. Aging Cell, 6(1), 121–123. https://doi.org/10.1111/j.1474-9726.2006.00254.x
+
+Baird, D. M., Rowson, J., Wynford-Thomas, D., & Kipling, D. (2003). Extensive allelic variation and ultrashort telomeres in senescent human cells. Nature Genetics, 33(2), 203–207. https://doi.org/10.1038/ng1084
+
+Bakaysa, S. L., Mucci, L. a., Slagboom, P. E., Boomsma, D. I., Mcclearn, G. E., Johansson, B., & Pedersen, N. L. (2007). Telomere length predicts survival independent of genetic influences. Aging Cell, 6(6), 769–774. https://doi.org/10.1111/j.1474-9726.2007.00340.x
+
+Barrett, E. L. B., Burke, T. a., Hammers, M., Komdeur, J., & Richardson, D. S. (2013). Telomere length and dynamics predict mortality in a wild longitudinal study. Molecular Ecology, 22(1), 249–259. https://doi.org/10.1111/mec.12110
+
+Bates, D., Mächler, M., Bolker, B., & Walker, S. (2015). Fitting Linear Mixed-Effects Models Using lme4. Journal of Statistical Software, 67(1). https://doi.org/10.18637/jss.v067.i01
+
+Bateson, M, & Nettle, D. (2016). The telomere lengthening conundrum - it could be biology. Aging Cell, 2016, 1–8. https://doi.org/10.1111/acel.12555
+
+Bateson, Melissa. (2016). Cumulative stress in research animals: Telomere attrition as a biomarker in a welfare context? BioEssays, 38(2), 201–212. https://doi.org/10.1002/bies.201500127
+
+Benetos, A., Kark, J. D., Susser, E., Kimura, M., Sinnreich, R., Chen, W., … Aviv, A. (2013). Tracking and fixed ranking of leukocyte telomere length across the adult life course. Aging Cell, 12(4), 615–621. https://doi.org/10.1111/acel.12086
+
+Bichet, C., Bouwhuis, S., Bauch, C., Verhulst, S., Becker, P. H., & Vedder, O. (2019). Telomere length is repeatable, shortens with age and reproductive success, and predicts remaining lifespan in a long‐lived seabird. Molecular Ecology, 2020(29), 429–441. https://doi.org/https://doi.org/10.1111/mec.1533
+
+Bize, P., Criscuolo, F., Metcalfe, N. B., Nasir, L., & Monaghan, P. (2009). Telomere dynamics rather than age predict life expectancy in the wild. Proceedings of the Royal Society of London B, 276(1662), 1679–1683. https://doi.org/10.1098/rspb.2008.1817
+
+Blackburn, E., & Gall, J. (1978). A Tandemly Repeated Sequence at the Termini of Extrachromosomal Ribbosomal RNA Genes in Tetrahymena. Journal of Molecular Biology, (120), 33–53.
+
+Boonekamp, J., Mulder, G., Salomons, H. M., Dijkstra, C., & Verhulst, S. (2014). Nestling telomere shortening, but not telomere length, reflects developmental stress and predicts survival in wild birds. Proceedings of the Royal Society B: Biological Sciences, 281(April), 20133287. https://doi.org/http://dx.doi.org/10.1098/rspb.2013.3287
+
+Boonekamp, J., Simons, M. J. P., Hemerik, L., & Verhulst, S. (2013). Telomere length behaves as biomarker of somatic redundancy rather than biological age. Aging Cell, 12(2), 330–332. https://doi.org/10.1111/acel.12050
+
+Boonekamp, J., Mulder, G., Salomons, H., Dijkstra, C., & Verhulst, S. (2014). Nestling telomere shortening, but not telomere length, reflects developmental stress and predicts survival in wild birds. Proceedings of the Royal Society B: Biological Sciences, 281(April), 20133287. https://doi.org/http://dx.doi.org/10.1098/rspb.2013.3287
+
+Broer, L., Codd, V., Nyholt, D. R., Deelen, J., Mangino, M., Willemsen, G., … Boomsma, D. I. (2013). Meta-analysis of telomere length in 19 713 subjects reveals high heritability, stronger maternal inheritance and a paternal age effect. European Journal of Human Genetics, 21(10), 1163–1168. https://doi.org/10.1038/ejhg.2012.303
+
+Brown, D. E., Dechow, C. D., Liu, W. S., Harvatine, K. J., & Ott, T. L. (2012). Hot topic: Association of telomere length with age, herd, and culling in lactating Holsteins. Journal of Dairy Science, 95(11), 6384–6387. https://doi.org/10.3168/jds.2012-5593
+
+Cawthon, R., Smith, K., O’Brien, E., Sivatchenko, A., & Kerber, R. (2003). Association between telomere length in blood and mortality in people aged 60 years or older. The Lancet, 361(9355), 393–395. https://doi.org/10.1016/S0140-6736(03)12384-7
+
+Chen, W., Kimura, M., Kim, S., Cao, X., Srinivasan, S. R., Berenson, G. S., … Aviv, A. (2011). Longitudinal versus cross-sectional evaluations of leukocyte telomere length dynamics: Age-dependent telomere shortening is the rule. Journals of Gerontology - Series A Biological Sciences and Medical Sciences, 66 A(3), 312–319. https://doi.org/10.1093/gerona/glq223
+
+Cherkas, L F, Aviv,  a, Valdes,  a M., Hunkin, J. L., Gardner, J. P., Surdulescu, G. L., … Spector, T. D. (2006). The effects of social status on biological aging as measured by white-blood-cell telomere length. Aging Cell, 5(5), 361–365. https://doi.org/10.1111/j.1474-9726.2006.00222.x
+
+Cherkas, Lynn F, Hunkin, J. L., Kato, B. S., Richards, J. B., Gardner, J. P., Surdulescu, G. L., … Aviv, A. (2008). The association between physical activity in leisure time and leukocyte telomere length. Archives of Internal Medicine, 168(2), 154–158. https://doi.org/10.1001/archinternmed.2007.39
+
+De Lange, T. (2005). Shelterin: The protein complex that shapes and safeguards human telomeres. Genes and Development, 19(18), 2100–2110. https://doi.org/10.1101/gad.1346005
+
+Dugdale, H. L., & Richardson, D. S. (2018). Heritability of telomere variation: it’s all about the environment! Philosophical Transactions of the Royal Society B, 373(1741), 20160450. https://doi.org/10.1098/rstb.2016.0450
+
+Entringer, S., Epel, E. S., Kumsta, R., Lin, J., Hellhammer, D. H., Blackburn, E. H., … Wadhwa, P. D. (2011). Stress exposure in intrauterine life is associated with shorter telomere length in young adulthood. Proceedings of the National Academy of Sciences, 108(33), E513–E518. https://doi.org/10.1073/pnas.1107759108
+
+Entringer, Sonja, Epel, E. S., Lin, J., Buss, C., Shahbaba, B., Blackburn, E. H., … Wadhwa, P. D. (2013). Maternal psychosocial stress during pregnancy is associated with newborn leukocyte telomere length. American Journal of Obstetrics and Gynecology, 208(2), 134.e1-134.e7. https://doi.org/10.1016/j.ajog.2012.11.033
+
+Epel, E., Daubenmier, J., Moskowitz, J. T., Folkman, S., & Blackburn, E. (2009). Can meditation slow rate of cellular aging? Cognitive stress, mindfulness, and telomeres. Annals of the New York Academy of Sciences, 1172, 34–53. https://doi.org/10.1111/j.1749-6632.2009.04414.x
+
+Epel, E. S., Blackburn, E. H., Lin, J., Dhabhar, F. S., Adler, N. E., Morrow, J. D., & Cawthon, R. M. (2004). Accelerated telomere shortening in response to life stress. Proceedings of the National Academy of Sciences, 101(49), 17312–17315. https://doi.org/10.1073/pnas.0407162101
+
+Fairlie, J., Holland, R., Pilkington, J. G., Pemberton, J. M., Harrington, L., & Nussey, D. H. (2015). Lifelong leukocyte telomere dynamics and survival in a free-living mammal. Aging Cell, 140–148. https://doi.org/10.1111/acel.12417
+
+Farzaneh-Far, R., Lin, J., Epel, E., Lapham, K., Blackburn, E., & Whooley, M. A. (2010). Telomere length trajectory and its determinants in persons with coronary artery disease: Longitudinal findings from the heart and soul study. PLoS ONE, 5(1). https://doi.org/10.1371/journal.pone.0008612
+
+Gardner, J. P., Li, S., Srinivasan, S. R., Chen, W., Kimura, M., Lu, X., … Aviv, A. (2005). Rise in insulin resistance is associated with escalated telomere attrition. Circulation, 111(17), 2171–2177. https://doi.org/10.1161/01.CIR.0000163550.70487.0B
+
+Goglin, S. E., Farzaneh-Far, R., Epel, E. S., Lin, J., Blackburn, E. H., & Whooley, M. A. (2016). Change in leukocyte telomere length predicts mortality in patients with stable coronary heart disease from the heart and soul study. PLoS ONE, 11(10), 1–12. https://doi.org/10.1371/journal.pone.0160748
+
+Gomes, N. M. V, Ryder, O. a., Houck, M. L., Charter, S. J., Walker, W., Forsyth, N. R., … Wright, W. E. (2011). Comparative biology of mammalian telomeres: Hypotheses on ancestral states and the roles of telomeres in longevity determination. Aging Cell, 10(5), 761–768. https://doi.org/10.1111/j.1474-9726.2011.00718.x
+
+Harley, C., Futcher, A., & Greider, C. (1990). Telomeres shorten during ageing of human fibroblasts. Nature, 345(6274), 458–460. https://doi.org/10.1038/345458a0
+
+Harrington, L., & Pucci, F. (2018). In medio stat virtus: unanticipated consequences of telomere dysequilibrium. Philosophical Transactions of the Royal Society B: Biological Sciences, 373(1741), 20160444. https://doi.org/10.1098/rstb.2016.0444
+
+Haussmann, M. F., Longenecker,  a. S., Marchetto, N. M., Juliano, S. a., & Bowden, R. M. (2012). Embryonic exposure to corticosterone modifies the juvenile stress response, oxidative stress and telomere length. Proceedings of the Royal Society B: Biological Sciences, 279(1732), 1447–1456. https://doi.org/10.1098/rspb.2011.1913
+
+Haussmann, Mark F, Winkler, D. W., & Vleck, C. M. (2005). Longer telomeres associated with higher survival in birds. Biology Letters, 1(2), 212–214. https://doi.org/10.1098/rsbl.2005.0301
+
+Heidinger, B. J., Blount, J. D., Boner, W., Griffiths, K., Metcalfe, N. B., & Monaghan, P. (2012). Telomere length in early life predicts lifespan. Proceedings of the National Academy of Sciences, 109(5), 1743–1748. https://doi.org/10.1073/pnas.1113306109
+
+Huzen, J., Wong, L. S. M., van Veldhuisen, D. J., Samani, N. J., Zwinderman, A. H., Codd, V., … Van der Harst, P. (2014). Telomere length loss due to smoking and metabolic traits. Journal of Internal Medicine, 275(2), 155–163. https://doi.org/10.1111/joim.12149
+
+Kark, J., Goldberger, N., Kimura, M., Sinnreich, R., & Aviv, A. (2012). Energy intake and leukocyte telomere length in young adults. The American Journal of Clinical Nutrition, (95), 479–487. https://doi.org/10.3945/ajcn.111.024521.1
+
+Kim, S., Parks, C. G., DeRoo, L. A., Chen, H., Taylor, J. A., Cawthon, R. M., & Sandler, D. P. (2009). Obesity and weight gain in adulthood and telomere length. Cancer Epidemiology Biomarkers and Prevention, 18(3), 816–820. https://doi.org/10.1158/1055-9965.EPI-08-0935
+
+Lai, T.-P., Zhang, N., Noh, J., Mender, I., Tedone, E., Huang, E., … Shay, J. W. (2017). A method for measuring the distribution of the shortest telomeres in cells and tissues. Nature Communications, 8(1), 1356. https://doi.org/10.1038/s41467-017-01291-z
+
+Muñoz-lorente, M. A., Cano-martin, A. C., & Blasco, M. A. (2019). Mice with hyper-long telomeres show less metabolic aging and longer lifespans. Nature Communications, 10(4723), 1–14. https://doi.org/10.1038/s41467-019-12664-x
+
+Nettle, D., Andrews, C., Reichert, S., Bedford, T., Kolenda, C., Parker, C., … Bateson, M. (2017). Early-life adversity accelerates cellular ageing and affects adult inflammation: Experimental evidence from the European starling. Scientific Reports, 7: 40794(December 2016), 1–10. https://doi.org/10.1038/srep40794
+
+Nettle, D., Monaghan, P., Boner, W., Gillespie, R., & Bateson, M. (2013). Bottom of the heap: Having heavier competitors accelerates early-life telomere loss in the European starling, Sturnus vulgaris. PLoS ONE, 8(12). https://doi.org/10.1371/journal.pone.0083617
+
+Nettle, D., Seeker, L., Nussey, D., Froy, H., & Bateson, M. (2019). Consequences of measurement error in qPCR telomere data: A simulation study. PLOS ONE, 14(5), e0216118. https://doi.org/10.1371/journal.pone.0216118
+
+Nordfjäll, K., Svenson, U., Norrback, K. F., Adolfsson, R., Lenner, P., & Roos, G. (2009). The individual blood cell telomere attrition rate is telomere length dependent. PLoS Genetics, 5(2), 2–7. https://doi.org/10.1371/journal.pgen.1000375
+
+Olovnikov, A. M. (1973). A theory of marginotomy. The incomplete copying of template margin in enzymic synthesis of polynucleotides and biological significance of the phenomenon. Journal of Theoretical Biology, 41(1), 181–190. https://doi.org/10.1016/0022-5193(73)90198-7
+
+R Core Team. (2014). R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from http://www.r-project.org/
+
+Reichert, S., Stier, A., Zahn, S., Arrivé, M., Bize, P., Massemin, S., & Criscuolo, F. (2014). Increased brood size leads to persistent eroded telomeres. Frontiers in Ecology and Evolution, 2(April), 1–11. https://doi.org/10.3389/fevo.2014.00009
+
+Seeker, L. A., Holland, R., Underwood, S., Fairlie, J., Psifidi, A., Ilska, J., … Nussey, D. H. (2016). Method specific calibration corrects for DNA extraction method effects on relative telomere length measurements by quantitative PCR. PLoS ONE, 11(10), 1–15. https://doi.org/10.1371/journal.pone.0164046
+
+Seeker, L. A., Ilska, J., Psifidi, A., Wilbourn, R. V., Underwood, S. L., Fairlie, J., … Banos, G. (2018). Bovine telomere dynamics and the association between telomere length and productive lifespan. Scientific Reports.
+
+Seeker, L. A., Ilska, J., Psifidi, A., Wilbourn, R. V, Underwood, L., Fairlie, J., … Banos, G. (2018). Longitudinal changes in telomere length and associated genetic parameters in dairy cattle analysed using random regression models. Plos One, 1–15. https://doi.org/10.1371/journal.pone.0192864
+
+Seeker, L., Holland, B., Psifidi, A., Banos, B., & Nussey, D. (2015). A robust assay for the measurement of telomere length in dairy cattle. In BSAS annual conference (p. 066).
+
+Shalev, I., Moffitt, T. E., Sugden, K., Williams, B., Houts, R. M., Danese, A., … Caspi, A. (2012). Exposure to violence during childhood is associated with telomere erosion from 5 to 10 years of age: a longitudinal study. Mol.Psychiatry, 18(5), 576–581. https://doi.org/10.1038/mp.2012.32
+
+Spurgin, L. G., Bebbington, K., Fairfield, E. A., Hammers, M., Komdeur, J., Burke, T., … Richardson, D. S. (2018). Spatio-temporal variation in lifelong telomere dynamics in a long-term ecological study. Journal of Animal Ecology, 87(1), 187–198. https://doi.org/10.1111/1365-2656.12741
+
+Steenstrup, T., Hjelmborg, J. V. B., Mortensen, L. H., Kimura, M., Christensen, K., & Aviv, A. (2013). Leukocyte telomere dynamics in the elderly. European Journal of Epidemiology, 28(2), 181–187. https://doi.org/10.1007/s10654-013-9780-4
+
+Svenson, U., Nordfjäll, K., Baird, D., Roger, L., Osterman, P., Hellenius, M.-L., & Roos, G. (2011). Blood Cell Telomere Length Is a Dynamic Feature. PLOS ONE, 6(6), e21485. Retrieved from https://doi.org/10.1371/journal.pone.0021485
+
+Therneau, T. M. (2015). A Package for Survival Analysis in S. Retrieved from https://cran.r-project.org/package=survival
+
+Veerkamp, R. ., Simm, G., & Oldham, J. . (1994). Effects of interaction between genotype and feeding system on milk production, feed intake, efficiency and body tissue mobilization in dairy cows. Livestock Production Science, 39(3), 229–241. https://doi.org/10.1016/0301-6226(94)90202-X
+
+Voillemot, M., Hine, K., Zahn, S., Criscuolo, F., Gustafsson, L., Doligez, B., & Bize, P. (2012). Effects of brood size manipulation and common origin on phenotype and telomere length in nestling collared flycatchers. BMC Ecology, 12(1), 17. https://doi.org/10.1186/1472-6785-12-17
+
+Watson, J. D. (1972). Origin of concatemeric T7 DNA. Nature: New Biology, 239(94), 197–201. Retrieved from http://www.ncbi.nlm.nih.gov/pubmed/4507727
+
+Whittemore, K., Vera, E., Martínez-nevado, E., Sanpera, C., & Blasco, M. A. (2019). Telomere shortening rate predicts species life span. Proceedings of the National Academy of Sciences, 116(30), 15122–15127. https://doi.org/10.1073/pnas.1902452116
+
+Wickham, H. (2009). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. Retrieved from http://ggplot2.org
+
+Wilbourn, R. V., Moatt, J. P., Froy, H., Walling, C. A., Nussey, D. H., & Boonekamp, J. J. (2018). The relationship between telomere length and mortality risk in non-model vertebrate systems: a meta-analysis. Phil. Trans. R. Soc. B, 373(1741), 20160447. https://doi.org/10.1098/RSTB.2016.0447
+
+Yuan, X., Kronström, M., Hellenius, M. L., Cederholm, T., & Xu, D. (2018). Longitudinal changes in leukocyte telomere length and mortality in elderly Swedish men. Aging, 10(10), 3005–3016.
+
+
+# Data Accessibility
+The complete dataset will be accessible after acceptance on GitHub. 
+
+
+# Author contributions
+All authors designed the experiment together. LS, SU, RW, JF, RH and AB collected the blood samples and processed them in the lab. LS analysed the data with help from HF, JI, AP, GB and DN. LS wrote the initial draft of the manuscript, DN and GB edited. All authors were involved in revising the manuscript. BW, MC, GB and DN obtained funding for the project. 
+
+
+
+
+
+```{r}
+sessionInfo()
+
+```

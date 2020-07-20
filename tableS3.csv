@@ -1,0 +1,18 @@
+"","Estimate","Std. Error","df","t value","Pr(>|t|)"
+"(Intercept)",-0.126,0.039,1002,-3.256,0.001
+"long_dat$age_y",0.022,0.014,1002,1.602,0.11
+"long_dat$feed_group2",-0.008,0.012,1002,-0.685,0.493
+"long_dat$feed_groupNULL",-0.007,0.016,1002,-0.409,0.683
+"long_dat$genetic_groupS",-0.01,0.011,1002,-0.896,0.371
+"as.factor(long_dat$birth_year)2009",-0.014,0.021,1002,-0.694,0.488
+"as.factor(long_dat$birth_year)2010",-0.012,0.029,1002,-0.431,0.666
+"as.factor(long_dat$birth_year)2011",-0.006,0.039,1002,-0.164,0.87
+"as.factor(long_dat$birth_year)2012",-0.022,0.055,1002,-0.396,0.692
+"as.factor(long_dat$birth_year)2013",-0.147,0.111,1002,-1.316,0.189
+"as.factor(long_dat$birth_year)2014",-0.242,0.193,1002,-1.255,0.21
+"as.factor(long_dat$sample_year)2011",0.042,0.026,1002,1.573,0.116
+"as.factor(long_dat$sample_year)2012",0.063,0.033,1002,1.895,0.058
+"as.factor(long_dat$sample_year)2013",0.087,0.045,1002,1.954,0.051
+"as.factor(long_dat$sample_year)2014",0.064,0.06,1002,1.052,0.293
+"as.numeric(paste(long_dat$sample_interval))",0,0,1002,-0.049,0.961
+"long_dat$health_event_2week",0.018,0.024,1002,0.721,0.471

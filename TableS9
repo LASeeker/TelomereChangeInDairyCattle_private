@@ -1,0 +1,13 @@
+"","Estimate","Std. Error","df","t value","Pr(>|t|)"
+"(Intercept)",0.195,0.174,906,1.121,0.263
+"PData$age_y",0.021,0.007,906,3.078,0.002
+"PData$feed_group2",-0.006,0.013,906,-0.429,0.668
+"PData$feed_groupNULL",0.009,0.024,906,0.379,0.704
+"PData$genetic_groupS",-0.011,0.012,906,-0.926,0.355
+"as.factor(PData$sample_year)2010",-0.338,0.174,906,-1.945,0.052
+"as.factor(PData$sample_year)2011",-0.301,0.174,906,-1.73,0.084
+"as.factor(PData$sample_year)2012",-0.278,0.174,906,-1.603,0.109
+"as.factor(PData$sample_year)2013",-0.252,0.174,906,-1.446,0.149
+"as.factor(PData$sample_year)2014",-0.275,0.176,906,-1.563,0.118
+"as.numeric(paste(PData$sample_interval))",0,0,906,-0.461,0.645
+"rescaled_prod",0.003,0.003,906,0.963,0.336
