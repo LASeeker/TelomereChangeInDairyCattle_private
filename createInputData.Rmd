@@ -277,3 +277,143 @@ coxData$abs_rltl_change_3G<-ntile(coxData$abs_rltl_change,3)
 
 write.csv(coxData, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/cox_data.csv")
 ```
+
+
+# Create a dataframe that excludes early measurements taken before the age of 3 months
+
+
+```{r}
+
+LateDF<-subset(data, data$age_m>3) #dataset with animals with more than two samples
+
+red_data_l<-subset(LateDF, LateDF$residual_rltl_tminus1 != "NULL")
+
+```
+
+
+###### Lifetime RLTL dynamics measures need to be re-calculated without the early measurements
+```{r}
+red_data_ldf<-data.frame(recoded_id = red_data_l$recoded_id, dob=red_data_l$dob, herd_life = red_data_l$herd_life, cull_date = red_data_l$cull_date, amp_305_lactation = red_data_l$amp_305_lactation, av_rltl_1_res = red_data_l$av_rltl_1_res, residual_rltl_t =red_data_l$residual_rltl_t, diff_rltl_res=red_data_l$diff_rltl_res, amp_305_lactation=red_data_l$amp_305_lactation)
+
+dfL <- data.frame(recoded_id=sort(unique(red_data_ldf$recoded_id)))
+dfL$average_resid<-tapply(red_data_ldf$residual_rltl_t, red_data_ldf$recoded_id, mean)
+dfL$rltl_change<-tapply(as.numeric(paste(red_data_ldf$diff_rltl_res)), red_data_ldf$recoded_id, mean)
+dfL$abs_rltl_change<-tapply(abs(as.numeric(paste(red_data_ldf$diff_rltl_res))), red_data_ldf$recoded_id, mean)
+
+
+red_data_l_new<-merge(red_data_ldf, dfL, by = "recoded_id")
+# This dataframe contains longitudinal measurements excluding 
+
+names(red_data_l_new)
+nrow(red_data_l_new)
+
+```
+
+
+###### Calculate sample number per animal
+```{r}
+
+#calculate number of samples per animal
+samp_no_late<-data.frame(recoded_id=sort(red_data_l_new$recoded_id))
+
+sdf<- samp_no_late %>% 
+  group_by(recoded_id) %>%
+  summarise(no_rows = length(recoded_id))
+
+
+sdf<-as.data.frame(sdf)
+
+
+
+names(sdf)<-c("recoded_id", "SamplesPerAnimal")
+
+
+summary(sdf$SamplesPerAnimal)
+
+sdf<-subset(sdf, sdf$SamplesPerAnimal > 1)
+
+red_data_l_new<-merge(red_data_l_new, sdf, by="recoded_id", all=TRUE)
+
+nrow(red_data_l_new)
+names(red_data_l_new)
+
+
+write.csv(red_data_l_new, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/excluded_less_3_month.csv")
+```
+
+#### generate a dataframe for animals with more than 2 samples
+```{r}
+
+More2<-subset(data, data$SamplesPerAnimal > 2) #dataset with animals with more than two samples
+redMore2<-subset(More2, More2$residual_rltl_tminus1 != "NULL")
+
+drops <- c("average_resid","rltl_change", "abs_rltl_change")
+redMore2<-redMore2[ , !(names(redMore2) %in% drops)]
+
+dfM2 <- data.frame(recoded_id=sort(unique(redMore2$recoded_id)))
+dfM2$average_resid_M2<-tapply(redMore2$residual_rltl_t, redMore2$recoded_id, mean)
+dfM2$rltl_change_M2<-tapply(as.numeric(paste(redMore2$diff_rltl_res)), redMore2$recoded_id, mean)
+dfM2$abs_rltl_change_M2<-tapply(abs(as.numeric(paste(redMore2$diff_rltl_res))), redMore2$recoded_id, mean)
+
+
+dfM2_df<-merge(redMore2, dfM2, by = "recoded_id")
+# This dataframe contains longitudinal measurements excluding 
+
+names(dfM2_df)
+nrow(dfM2_df)
+
+
+write.csv(dfM2_df, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/more_2_sampl.csv" )
+
+```
+
+
+###### Calculate sample number per animal
+```{r}
+
+#calculate number of samples per animal
+samp_no_late<-data.frame(recoded_id=sort(red_data_l_new$recoded_id))
+
+sdf<- samp_no_late %>% 
+  group_by(recoded_id) %>%
+  summarise(no_rows = length(recoded_id))
+
+
+sdf<-as.data.frame(sdf)
+
+
+
+names(sdf)<-c("recoded_id", "SamplesPerAnimal")
+
+
+summary(sdf$SamplesPerAnimal)
+
+sdf<-subset(sdf, sdf$SamplesPerAnimal > 1)
+
+red_data_l_new<-merge(red_data_l_new, sdf, by="recoded_id", all=TRUE)
+
+nrow(red_data_l_new)
+names(red_data_l_new)
+```
+
+
+```{r}
+
+
+deadD<-subset(data, data$herd_life != "NULL")
+deadMore2<-subset(More2, More2$herd_life != "NULL")
+
+redDeadD<-subset(redData, redData$herd_life != "NULL")
+
+redMore2<-subset(More2, More2$residual_rltl_tminus1 != "NULL")
+redDeadMore2<-subset(redMore2, redMore2$herd_life != "NULL")
+
+
+uDeadData<-redDeadD[!duplicated(redDeadD$recoded_id),]
+
+
+uDeadDataMore2<-redDeadMore2[!duplicated(redDeadMore2$recoded_id),]
+
+
+
+```
