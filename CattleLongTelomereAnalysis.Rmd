@@ -303,13 +303,47 @@ mycoloursP<- c(mypal, mypal2, mypal3, mypal4)
 ```
 
 
-# Read in data
+# Read in telomere data
 
 ```{r}
 
 data<- read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/LongTelomereDataCattle.csv")
 
+```
 
+# read in weather data
+
+Weather data was downloaded from the [metoffice homepage](https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/eskdalemuirdata.txt) from the station in Eskdalemuir which is the closest accessible weather data station to Dumfries (21.8 miles or 35.1 km based on [freemaptools](https://www.freemaptools.com/how-far-is-it-between.htm)
+
+Text data was importet to Excel, where season and year summary statistics were added. Then the data was exported as .csv file. 
+
+```{r}
+weather<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/weatherData/eskdalemuirdata_red.csv")
+
+weather<-weather[!duplicated(weather$year),]
+
+weather<-weather[, -(2:13)]
+
+
+weather$sample_year<-weather$year +1 # becasue change is recorede based in RLTL in the second time point in relation to the first. So it is looking back. For calves this should work, for adult cows the samppling intervals were often not one year appart and I have to re-think how to match wether data with the sampling interval
+#colnames(weather)[1]<-"sample_year" 
+
+```
+
+## Merge telomere and weather data
+
+```{r}
+
+data<-merge(data, weather, by = "sample_year" )
+
+
+```
+
+
+# Prepare data
+
+To keep this document cleaner "createInputData.Rmd" was used to create different input dataframes in the format required for different analyses (for example a Cox- proportional hazard model needs different infromation to a linear mixed model).
+```{r}
 # create data which only lists each animal ID once (needed for some counts/ histograms below)
 uData<- data[!duplicated(data$recoded_id),]
 
@@ -322,7 +356,26 @@ init_change_dat<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/Long
 coxData<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/cox_data.csv")
 
 coxDataR<-subset(coxData, coxData$amp_305_lactation != "NULL")
+
+deadD<-subset(data, data$herd_life != "NULL")
+redDeadD<-subset(redData, redData$herd_life != "NULL")
+uDeadData<-redDeadD[!duplicated(redDeadD$recoded_id),]
+
+#Data for repeating Cox proportional hazard model without without the fist measurement.
+
+
+red_data_l_new<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/excluded_less_3_month.csv")
+
+uniq_red_data_l_new<-red_data_l_new[!duplicated(red_data_l_new$recoded_id),]
+
+
+#df with more than two measurements
+
+more_2<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/more_2_sampl.csv")
+
+u_more_2<-more_2[!duplicated(more_2$recoded_id),]
 ```
+
 
 
 # Fig. 1
@@ -338,6 +391,29 @@ agePlot<- ggplot(redData, aes(x=as.factor(redData$age_y), y=as.numeric(paste(red
 
 grid.arrange(agePlot, SubsPlot, ncol=2)
 ```
+
+# Fig. Initial change data
+
+```{r}
+in_df<-data.frame(recoded_id = init_change_dat$recoded_id, RLTL = init_change_dat$RLTL0, age= 0, year= init_change_dat$ sample_year0)   
+in_df2<-data.frame(recoded_id = init_change_dat$recoded_id, RLTL = init_change_dat$RLTL1, age= 1, year= init_change_dat$ sample_year1)   
+
+init_df<-rbind(in_df, in_df2)
+
+ggplot(data = init_df, aes(x = as.factor(init_df$age), y = RLTL, group = recoded_id, colour = recoded_id))+geom_point()+ geom_line()+ 
+  xlab("Age in years") + ylab("RLTL residuals") + theme_classic(20)
+
+```
+
+# Fig. Initial change data over year
+
+```{r}
+
+ggplot(data = init_df, aes(x = as.factor(init_df$year), y = RLTL, group = recoded_id, colour = recoded_id))+geom_point()+ geom_line()+ 
+  xlab("Age in years") + ylab("RLTL residuals") + theme_classic(20)
+
+```
+
 
 
 # Fig. 2
@@ -471,6 +547,193 @@ arrange_ggsurvplots(surv_plotlist, print = TRUE, ncol = 2, nrow = 2)
 
 
 
+
+# Distribution of number of samples per animal, RLTL residuls and change in RLTL (residuals)
+
+RLTL measures were previously corrected for qPCR plate and row because they have a known effect on our measurements. 
+```{r}
+
+hist1<-ggplot(uData, aes(x = uData$SamplesPerAnimal)) + 
+	geom_histogram(colour= "black", fill = mycoloursP[7], binwidth = 1) + xlab("Number of samples per animal") +  
+  geom_vline(xintercept= mean(as.numeric(paste(uData$SamplesPerAnimal))), colour="red")+ 
+  annotate("text", x = 1, y = 100, label = "(A)", fontface =2, size = 8) + theme_classic(20)+
+  scale_x_continuous(breaks=c(1:8))
+
+#hist1
+
+
+hist2<-ggplot(data, aes(x = data$residual_rltl_t)) + 
+	geom_histogram(colour= "black", fill = mycoloursP[8]) + xlab("Adjusted RLTL") + 
+  geom_vline(xintercept= mean(as.numeric(paste(data$residual_rltl_t))), colour="red") + 
+  annotate("text", x = -0.4, y = 120, label = "(B)", fontface =2, size = 8)+
+  theme_classic(20)+
+	stat_function(
+		fun = function(x, mean, sd, n){
+			 n/25* dnorm(x = x, mean = mean, sd = sd)
+		}, 
+		args = with(data, c(mean = mean(data$residual_rltl_t), sd = sd(data$residual_rltl_t), n
+= length(data$residual_rltl_t)))
+	) 
+
+
+nrow(redData)
+
+diff<- as.numeric(paste(redData$diff_rltl_res))
+
+hist3<-ggplot(redData, aes(x = as.numeric(paste(redData$diff_rltl_res)))) + 
+	geom_histogram(colour= "black", fill = mycoloursP[9]) + xlab("Adjusted RLTL change") +  
+  geom_vline(xintercept= mean(as.numeric(paste(redData$diff_rltl_res))), colour="red") +
+  annotate("text", x = -0.6, y = 95, label = "(C)", fontface =2, size= 8)+
+  theme_classic(20)+
+	stat_function(
+		fun = function(x, mean, sd, n){
+			 n/23* dnorm(x = x, mean = mean, sd = sd)
+		}, 
+		args = with(redData, c(mean = mean(as.numeric(paste(redData$diff_rltl_res))), sd = sd(as.numeric(paste(redData$diff_rltl_res))), n
+= length(as.numeric(paste(redData$diff_rltl_res))))))
+
+#hist3
+ 
+```
+
+##### Histogram of change in telomere length within the first year of life
+```{r}
+init_hist<-ggplot(init_change_dat, aes(x=init_change_dat$ResDiff)) +geom_histogram(colour= "black", fill = mycoloursP[10])+ xlab("Initial RLTL change") + theme_classic(20)+  
+  geom_vline(xintercept= mean(as.numeric(paste(init_change_dat$ResDiff))), colour="red") +
+  annotate("text", x = -0.6, y = 28, label = "(D)", fontface =2, size= 8) +
+	stat_function(
+		fun = function(x, mean, sd, n){
+			 n/23 * dnorm(x = x, mean = mean, sd = sd)
+		}, 
+		args = with(init_change_dat, c(mean = mean(as.numeric(paste(init_change_dat$ResDiff))), 
+		                         sd = sd(as.numeric(paste(init_change_dat$ResDiff))), 
+		                         n= length(as.numeric(paste(init_change_dat$ResDiff))))))
+
+```
+
+
+
+#### Histogram of samples per animal after removing early measurements
+```{r}
+hist1b<-ggplot(u_more_2, aes(x = SamplesPerAnimal)) + 
+	geom_histogram(colour= "black", fill = mycoloursP[11], binwidth = 1) + xlab("Number of samples per animal") +  
+  geom_vline(xintercept= mean(as.numeric(paste(u_more_2$SamplesPerAnimal)), na.rm=TRUE), colour="red")+ 
+  annotate("text", x = 0.7, y = 100, label = "(E)", fontface =2, size = 8) + theme_classic(20)+
+  scale_x_continuous(breaks=c(1:8))
+
+#hist1b
+```
+
+
+For dataframe with more than 2 samples 
+```{r}
+hist2b<-ggplot(more_2, aes(x = more_2$residual_rltl_t)) + 
+	geom_histogram(colour= "black", fill = mycoloursP[12]) + xlab("Adjusted RLTL") + 
+  geom_vline(xintercept= mean(as.numeric(paste(more_2$residual_rltl_t))), colour="red") + 
+  annotate("text", x = -0.4, y = 95, label = "(F)", fontface =2, size = 8)+
+  theme_classic(20)+
+	stat_function(
+		fun = function(x, mean, sd, n){
+			 n/27* dnorm(x = x, mean = mean, sd = sd)
+		}, 
+		args = with(more_2, c(mean = mean(more_2$residual_rltl_t), sd = sd(more_2$residual_rltl_t), n
+= length(more_2$residual_rltl_t)))
+	) 
+
+#hist2b
+
+```
+
+```{r}
+
+nrow(more_2)
+
+
+hist3b<-ggplot(more_2, aes(x = as.numeric(paste(more_2$diff_rltl_res)))) + 
+	geom_histogram(colour= "black", fill = mycoloursP[13]) + xlab("Adjusted RLTL change") +  
+  geom_vline(xintercept= mean(as.numeric(paste(more_2$diff_rltl_res))), colour="red") +
+  annotate("text", x = -0.6, y = 95, label = "(G)", fontface =2, size= 8)+
+  theme_classic(20)+
+	stat_function(
+		fun = function(x, mean, sd, n){
+			 n/23* dnorm(x = x, mean = mean, sd = sd)
+		}, 
+		args = with(more_2, c(mean = mean(as.numeric(paste(more_2$diff_rltl_res))), sd = sd(as.numeric(paste(more_2$diff_rltl_res))), n
+= length(as.numeric(paste(more_2$diff_rltl_res))))))
+
+#hist3b
+
+```
+The plot above looks so much like hist1 that I think I may have made a mistake. when I look for summary output of diff_rltl_res in both the complete dataset (data) as well as the subsetted dataset (red_data_l_new) summary statistics are really very similar, but not identical. By removing single samples, I should have removed samples without a first change measurement. I have to think about this for a little bit. 
+
+# Productive lifespan:
+
+```{r}
+variable<- as.numeric(paste(uDeadData$herd_life))
+#sqrt might improve normality test outcome slightly...
+
+meanHL<-mean(as.numeric(paste(uDeadData$herd_life)))
+
+
+prod_lsp_plot <- ggplot(uDeadData, aes(x = as.numeric(paste(uDeadData$herd_life)))) + 
+	geom_histogram(colour= "black", fill = mycoloursP[14]) + xlab("Productive lifespan in days") +  
+  geom_vline(xintercept= mean(as.numeric(paste(uDeadData$herd_life))), colour="red")+
+  annotate("text", x = 10, y = 19, label = "(H)", fontface =2, size= 8) + theme_classic(20) +
+	stat_function(
+		fun = function(x, mean, sd, n){
+			 n*120 * dnorm(x = x, mean = mean, sd = sd)
+		}, 
+		args = with(uDeadData, c(mean = mean(as.numeric(paste(uDeadData$herd_life))), 
+		                         sd = sd(as.numeric(paste(uDeadData$herd_life))), 
+		                         n= length(as.numeric(paste(uDeadData$herd_life))))))
+
+
+#prod_lsp_plot
+
+```
+
+```{r, fig.width = 10, fig.height=6}
+grid.arrange(hist1, hist2, hist3, init_hist, hist1b, hist2b, hist3b, prod_lsp_plot,  ncol = 4)
+
+```
+
+# Statistical tests for normality
+
+RLTL length
+```{r}
+# statistical tests for normal distribution of RTL measurements
+shapiro.test(data$residual_rltl_t)
+ks.test(data$residual_rltl_t, pnorm)
+qqnorm(data$residual_rltl_t)
+
+```
+
+Adjusted RLTL change
+```{r}
+# statistical tests for normal distribution of RTL measurements
+shapiro.test(as.numeric(paste(data$diff_rltl_res)))
+ks.test(as.numeric(paste(data$diff_rltl_res)), pnorm)
+qqnorm(as.numeric(paste(data$diff_rltl_res)))
+
+```
+
+```{r}
+
+
+# statistical tests for normal distribution of difference in RTL residuals
+shapiro.test(as.numeric(paste(uDeadData$herd_life)))
+ks.test(as.numeric(paste(uDeadData$herd_life)), pnorm)
+qqnorm(as.numeric(paste(uDeadData$herd_life)))
+```
+
+
+```{r}
+# test if mean RLTL change is significantly different from zero:
+
+t.test(as.numeric(paste(redData$diff_rltl_res)), mu=0, alternative="less", conf.level=0.99)
+
+```
+
 # calculate sample number per animal
 
 ```{r}
@@ -486,100 +749,7 @@ print(paste("There are ", count, " relative leukocyte telomere length (RLTL) mea
 sample_year_summ
 ```
 
-
-
-
-# Plot sample number per animal
-```{r}
-
-hist1<-ggplot(uData, aes(x = uData$SamplesPerAnimal)) + 
-	geom_histogram(colour= "black", fill = mycoloursP[7], binwidth = 1) + xlab("Number of samples per animal") +  
-  geom_vline(xintercept= mean(as.numeric(paste(uData$SamplesPerAnimal))), colour="red")+ 
-  annotate("text", x = 1, y = 100, label = "(A)", fontface =2, size = 8) + theme_classic(20)+
-  scale_x_continuous(breaks=c(1:8))
-
-#hist1
-
-```
-
-
-
-
-# Plot distribution of telomere residuals
-```{r}
-
-hist2<-ggplot(data, aes(x = data$residual_rltl_t)) + 
-	geom_histogram(colour= "black", fill = mycoloursP[12]) + xlab("Adjusted RLTL") + 
-  geom_vline(xintercept= mean(as.numeric(paste(data$residual_rltl_t))), colour="red") + 
-  annotate("text", x = -0.4, y = 120, label = "(B)", fontface =2, size = 8)+
-  theme_classic(20)+
-	stat_function(
-		fun = function(x, mean, sd, n){
-			 n/25* dnorm(x = x, mean = mean, sd = sd)
-		}, 
-		args = with(data, c(mean = mean(data$residual_rltl_t), sd = sd(data$residual_rltl_t), n
-= length(data$residual_rltl_t)))
-	) 
-
-#hist2
-
-```
-
-
-```{r}
-# statistical tests for normal distribution of RTL measurements
-shapiro.test(data$residual_rltl_t)
-ks.test(data$residual_rltl_t, pnorm)
-qqnorm(data$residual_rltl_t)
-
-```
-
-
-
-
-## Plot difference between RLTL res at time t and time t-1
-
-```{r}
-
-diff<- as.numeric(paste(redData$diff_rltl_res))
-
-hist3<-ggplot(redData, aes(x = as.numeric(paste(redData$diff_rltl_res)))) + 
-	geom_histogram(colour= "black", fill = mycoloursP[13]) + xlab("Adjusted RLTL change") +  
-  geom_vline(xintercept= mean(as.numeric(paste(redData$diff_rltl_res))), colour="red") +
-  annotate("text", x = -0.6, y = 95, label = "(C)", fontface =2, size= 8)+
-  theme_classic(20)+
-	stat_function(
-		fun = function(x, mean, sd, n){
-			 n/23* dnorm(x = x, mean = mean, sd = sd)
-		}, 
-		args = with(redData, c(mean = mean(as.numeric(paste(redData$diff_rltl_res))), sd = sd(as.numeric(paste(redData$diff_rltl_res))), n
-= length(as.numeric(paste(redData$diff_rltl_res))))))
-
-#hist3
- 
-```
-
-```{r, fig.width = 10, fig.height=3}
-grid.arrange(hist1, hist2, hist3, ncol = 3)
-
-```
-
-```{r}
-
-
-# statistical tests for normal distribution of difference in RTL residuals
-shapiro.test(diff)
-ks.test(diff, pnorm)
-qqnorm(diff)
-```
-
-
-```{r}
-# test if mean RLTL change is significantly different from zero:
-
-t.test(as.numeric(paste(redData$diff_rltl_res)), mu=0, alternative="less", conf.level=0.99)
-
-```
+Due to our sample routine, animals samples in 2008 all must be calves. This may have an impact on an investigation of the effect of sample year on change in RLTL.
 
 
 
@@ -597,8 +767,9 @@ percent_elongating
 ```
 
 
+# MIXED MODELS
 
-#### Initial full model of RLTL change
+# Full model of RLTL change
 
 ```{r}
 
@@ -697,20 +868,7 @@ anova(prod_mod)
 
 
 
-##### Histogram of change in telomere length within the first year of life
-```{r}
-ggplot(init_change_dat, aes(x=init_change_dat$ResDiff)) +geom_histogram(colour= "black", fill = mycoloursP[6])+ xlab("Initial RLTL change") + theme_classic(20)+  
-  geom_vline(xintercept= mean(as.numeric(paste(init_change_dat$ResDiff))), colour="red") +
-  annotate("text", x = -0.7, y = 28, label = "(*)", fontface =2, size= 10) +
-	stat_function(
-		fun = function(x, mean, sd, n){
-			 n/23 * dnorm(x = x, mean = mean, sd = sd)
-		}, 
-		args = with(init_change_dat, c(mean = mean(as.numeric(paste(init_change_dat$ResDiff))), 
-		                         sd = sd(as.numeric(paste(init_change_dat$ResDiff))), 
-		                         n= length(as.numeric(paste(init_change_dat$ResDiff))))))
 
-```
 
 ##### Statistical normality tests
 ```{r}
@@ -820,9 +978,7 @@ ggplot(data = data, aes(x = age_y , y = residual_rltl_t, group = recoded_id)) + 
 ```{r}
 # # average_resid rltl_change  abs_rltl_change MeanChangeRate MeanChangeRateAbs
 
-deadD<-subset(data, data$herd_life != "NULL")
-redDeadD<-subset(redData, redData$herd_life != "NULL")
-uDeadData<-redDeadD[!duplicated(redDeadD$recoded_id),]
+
 
 #1)
 x<-15
@@ -928,42 +1084,17 @@ grid.arrange(SubsPlot, SubsPlot2, ncol=2)
 Productive lifespan
 
 ```{r}
-variable<- as.numeric(paste(uDeadData$herd_life))
-#sqrt might improve normality test outcome slightly...
 
-meanHL<-mean(as.numeric(paste(uDeadData$herd_life)))
-
-
-prod_lsp_plot <- ggplot(uDeadData, aes(x = as.numeric(paste(uDeadData$herd_life)))) + 
-	geom_histogram(colour= "black", fill = mycoloursP[4]) + xlab("Productive lifespan in days") +  
-  geom_vline(xintercept= mean(as.numeric(paste(uDeadData$herd_life))), colour="red")+
-  annotate("text", x = 0, y = 17.5, label = "(D)", fontface =2, size= 10) + theme_classic(20) +
-	stat_function(
-		fun = function(x, mean, sd, n){
-			 n*120 * dnorm(x = x, mean = mean, sd = sd)
-		}, 
-		args = with(uDeadData, c(mean = mean(as.numeric(paste(uDeadData$herd_life))), 
-		                         sd = sd(as.numeric(paste(uDeadData$herd_life))), 
-		                         n= length(as.numeric(paste(uDeadData$herd_life))))))
-
-
-prod_lsp_plot
 
 # statistical tests for normal distribution of RTL measurements
-shapiro.test(variable)
-ks.test(variable, pnorm)
-qqnorm(variable)
+shapiro.test(as.numeric(paste(uDeadData$herd_life)))
+ks.test(as.numeric(paste(uDeadData$herd_life)), pnorm)
+qqnorm(as.numeric(paste(uDeadData$herd_life)))
 ```
 
 
 
-Assemble plots for supplemenrary file
 
-```{r, fig.height = 6, fig.width = 10, fig.cap= "Histograms of (A) Number of RLTL measurements per animal, (B) RLTL residuals after correcting for qPCR plate and row, (C) measurement to measurement change in RLTL residuals (after correcting for qPCR plate and row) and (D) productive lifespan in days; Red lines indicate mean."}
-
-grid.arrange(hist1, hist2, hist3, prod_lsp_plot, ncol=2)
-
-```
 
 
 
@@ -1404,75 +1535,9 @@ summary(coxFit)
 
 ```
 
-###### Repeat Cox proportional hazard model without without the fist measurement.
-
-```{r}
-red_data_l_new<-read.csv("/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/excluded_less_3_month.csv")
-
-```
 
 
-```{r}
 
-
-uniq_red_data_l_new<-red_data_l_new[!duplicated(red_data_l_new$recoded_id),]
-```
-
-
-#### Histogram of samples per animal after removing early measurements
-```{r}
-hist1b<-ggplot(uniq_red_data_l_new, aes(x = uniq_red_data_l_new$SamplesPerAnimal)) + 
-	geom_histogram(colour= "black", fill = mycoloursP[15], binwidth = 1) + xlab("Number of samples per animal") +  
-  geom_vline(xintercept= mean(as.numeric(paste(uniq_red_data_l_new$SamplesPerAnimal)), na.rm=TRUE), colour="red")+ 
-  annotate("text", x = 0.7, y = 100, label = "(A)", fontface =2, size = 10) + theme_classic(20)+
-  scale_x_continuous(breaks=c(1:8))
-
-hist1b
-```
-
-
-For dataframe that excludes the first sample
-```{r}
-hist2b<-ggplot(red_data_l_new, aes(x = red_data_l_new$residual_rltl_t)) + 
-	geom_histogram(colour= "black", fill = mycoloursP[16]) + xlab("Adjusted RLTL") + 
-  geom_vline(xintercept= mean(as.numeric(paste(red_data_l_new$residual_rltl_t))), colour="red") + 
-  annotate("text", x = -0.45, y = 120, label = "(B)", fontface =2, size = 10)+
-  theme_classic(20)+
-	stat_function(
-		fun = function(x, mean, sd, n){
-			 n/27* dnorm(x = x, mean = mean, sd = sd)
-		}, 
-		args = with(red_data_l_new, c(mean = mean(red_data_l_new$residual_rltl_t), sd = sd(red_data_l_new$residual_rltl_t), n
-= length(red_data_l_new$residual_rltl_t)))
-	) 
-
-hist2b
-
-```
-
-```{r}
-
-#red_data_l_new_ch<-subset(red_data_l_new, red_data_l_new$SamplesPerAnimal != 2)
-
-
-diff<- as.numeric(paste(red_data_l_new$diff_rltl_res))
-
-hist3b<-ggplot(red_data_l_new, aes(x = as.numeric(paste(red_data_l_new$diff_rltl_res)))) + 
-	geom_histogram(colour= "black", fill = mycoloursP[17]) + xlab("Adjusted RLTL change") +  
-  geom_vline(xintercept= mean(as.numeric(paste(red_data_l_new$diff_rltl_res))), colour="red") +
-  annotate("text", x = -0.75, y = 95, label = "(C)", fontface =2, size= 10)+
-  theme_classic(20)+
-	stat_function(
-		fun = function(x, mean, sd, n){
-			 n/23* dnorm(x = x, mean = mean, sd = sd)
-		}, 
-		args = with(red_data_l_new, c(mean = mean(as.numeric(paste(red_data_l_new$diff_rltl_res))), sd = sd(as.numeric(paste(red_data_l_new$diff_rltl_res))), n
-= length(as.numeric(paste(red_data_l_new$diff_rltl_res))))))
-
-hist3b
-
-```
-The plot above looks so much like hist1 that I think I may have made a mistake. when I look for summary output of diff_rltl_res in both the complete dataset (data) as well as the subsetted dataset (red_data_l_new) summary statistics are really very similar, but not identical. By removing single samples, I should have removed samples without a first change measurement. I have to think about this for a little bit. 
 
 ```{r}
 summary(as.numeric(paste(red_data_l_new$diff_rltl_res)))
@@ -1686,6 +1751,7 @@ ggplot(data, aes(x = variable)) +
 
 uData<-data[!duplicated(data$recoded_id),]
 
+
 variable<-as.factor(paste(uData$birth_year))
 
 ggplot(uData, aes(x = variable)) + 
@@ -1808,6 +1874,149 @@ write.csv(TableS9, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomer
 
 TableS10<-as.data.frame(anova(prod_mod))
 write.csv(TableS10, "/Users/luise/Documents/Work/CattleTelomereLength/LongTelomereChangePaper/git/TelomereChangeInDairyCattle/TableS10")
+```
+
+Weather data
+
+look at calves first, becasue the sample interval is clearer
+
+```{r}
+init_weath<-merge(init_change_dat, weather, by ="sample_year")
+
+weath_mod<-lmer(as.numeric(paste(init_weath$ResDiff))~  init_weath$year_maxT +(1|init_weath$recoded_id), na.action=na.exclude)
+
+
+summary(weath_mod)
+anova(weath_mod)
+
+
+```
+
+Change in calves seems to be not significantly associated with sample year so it is difficult to argue for an effect of weather on change in RLTL length in early life. Other environmantal stressors may have a larger impact. 
+
+
+# WEATHER IN ADULTS
+```{r}
+# max T (almosts!)
+yTmax_mod_1<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+   as.numeric(paste(redData$sample_interval))+ redData$year_maxT +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(yTmax_mod_1)
+anova(yTmax_mod_1)
+
+AIC(yTmax_mod_1)
+
+# min T (almost s!)
+yTmin_mod_1<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+   as.numeric(paste(redData$sample_interval))+ redData$year_minT +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(yTmin_mod_1)
+anova(yTmin_mod_1)
+
+AIC(yTmin_mod_1)
+
+#mean days of frost
+
+ymAF_mod_1<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+   as.numeric(paste(redData$sample_interval))+ redData$year_af_days_mean +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(ymAF_mod_1)
+anova(ymAF_mod_1)
+
+AIC(ymAF_mod_1)
+
+
+#max sun hours/month per year
+#(n.s.)
+yMaxSH_mod_1<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+   as.numeric(paste(redData$sample_interval))+ redData$year_sun_hours_max +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(yMaxSH_mod_1)
+anova(yMaxSH_mod_1)
+
+AIC(yMaxSH_mod_1)
+
+#mean precipitation per year
+#(n.s.)
+y_rain<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+   as.numeric(paste(redData$sample_interval))+ redData$year_mean_rain +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(y_rain)
+anova(y_rain)
+
+AIC(y_rain)
+
+
+#maxT spring
+#(sign in opposite direction as expected)
+yMaxSH_mod_1<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+   as.numeric(paste(redData$sample_interval))+ redData$maxT_spring +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(yMaxSH_mod_1)
+anova(yMaxSH_mod_1)
+
+AIC(yMaxSH_mod_1)
+
+#maxT summer
+#(s!)
+yMaxSuH_mod_1<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+   as.numeric(paste(redData$sample_interval))+ redData$maxT_summer +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(yMaxSuH_mod_1)
+anova(yMaxSuH_mod_1)
+
+AIC(yMaxSuH_mod_1)
+
+
+#maxT autumn
+#(n.s.)
+yMaxAH_mod_1<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+   as.numeric(paste(redData$sample_interval))+ redData$maxT_autumn +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(yMaxAH_mod_1)
+anova(yMaxAH_mod_1)
+
+AIC(yMaxAH_mod_1)
+
+#maxT winter
+#(n.s.)
+yMaxW_mod_1<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+   as.numeric(paste(redData$sample_interval))+ redData$maxT_winter +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(yMaxW_mod_1)
+anova(yMaxAH_mod_1)
+
+AIC(yMaxW_mod_1)
+
+
+#minT spring (s!)
+
+min_t_sp<-lmer(as.numeric(paste(redData$diff_rltl_res))~ redData$age_y + redData$feed_group + redData$genetic_group+   as.numeric(paste(redData$sample_interval))+ redData$minT_spring +(1|redData$recoded_id), na.action=na.exclude)
+
+
+summary(min_t_sp)
+anova(min_t_sp)
+
+AIC(min_t_sp)
+```
+
+Test distribution of sample date
+```{r}
+date_table<- table(data$sample_date)
+
+date_table <- setNames(data.frame(table(data$sample_date)),c("Date","Count"))
+  
+date_table$Date<-as.Date(date_table$Date, "%d/%m/%Y")    
+date_table$Count<-as.numeric(paste(date_table$Count))
+
+
+ 
+```
+
+
+```{r}
+
+ggplot(date_table, aes( x = Date, y= Count))+ geom_line()+ geom_point()+ theme_classic()
 ```
 
 

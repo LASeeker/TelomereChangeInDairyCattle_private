@@ -183,9 +183,9 @@ df<-data.frame(recoded_id=unique(data$recoded_id))
 RLTL0<-subset(data, data$age_y==0)
 RLTL1<-subset(data, data$age_y==1)
 
-df2<-data.frame(recoded_id=RLTL0$recoded_id, RLTL0=RLTL0$residual_rltl_t, S_date0=RLTL0$sample_date, herd_life= RLTL0$herd_life, cull_date=RLTL0$cull_date, dob=RLTL0$dob, tel_sample_no= RLTL0$tel_sample_no)
+df2<-data.frame(recoded_id=RLTL0$recoded_id, RLTL0=RLTL0$residual_rltl_t, S_date0=RLTL0$sample_date, herd_life= RLTL0$herd_life, cull_date=RLTL0$cull_date, dob=RLTL0$dob, tel_sample_no= RLTL0$tel_sample_no, sample_year0= RLTL0$sample_year)
 
-df3<-data.frame(recoded_id=RLTL1$recoded_id, RLTL1=RLTL1$residual_rltl_t, S_date1=RLTL1$sample_date)
+df3<-data.frame(recoded_id=RLTL1$recoded_id, RLTL1=RLTL1$residual_rltl_t, S_date1=RLTL1$sample_date, sample_year= RLTL1$sample_year)
 
 InData<-merge(df, df2, by="recoded_id")
 InData2<-merge(InData, df3, by="recoded_id")
@@ -344,7 +344,7 @@ write.csv(red_data_l_new, "/Users/luise/Documents/Work/CattleTelomereLength/Long
 #### generate a dataframe for animals with more than 2 samples
 ```{r}
 
-More2<-subset(data, data$SamplesPerAnimal > 2) #dataset with animals with more than two samples
+More2<-subset(data, data$SamplesPerAnimal >= 3) #dataset with animals with more than two samples
 redMore2<-subset(More2, More2$residual_rltl_tminus1 != "NULL")
 
 drops <- c("average_resid","rltl_change", "abs_rltl_change")
