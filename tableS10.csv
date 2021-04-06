@@ -1,0 +1,9 @@
+"","Estimate","Std. Error","df","t value","Pr(>|t|)"
+"(Intercept)",-11.045,13.79,1011,-0.801,0.423
+"redData$age_y",0.025,0.006,1011,4.129,0
+"redData$feed_group2",-0.011,0.012,1011,-0.875,0.382
+"redData$feed_groupNULL",-0.014,0.015,1011,-0.881,0.378
+"redData$genetic_groupS",-0.013,0.011,1011,-1.136,0.256
+"as.numeric(paste(redData$sample_interval))",0,0,1011,0.2,0.842
+"redData$sample_year",0.006,0.007,1011,0.808,0.419
+"redData$maxT_Q2",-0.01,0.004,1011,-2.523,0.012
